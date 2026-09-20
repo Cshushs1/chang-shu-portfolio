@@ -77,14 +77,12 @@
       color: var(--red);
     }
 
-
     /* TOP INFORMATION */
 
     .top-info {
       display: flex;
       justify-content: space-between;
       padding: 16px 3vw 0;
-
       font-family: "Courier New", monospace;
       font-size: 9px;
       line-height: 1.55;
@@ -97,22 +95,17 @@
       color: var(--red);
     }
 
-
     /* FIRST SCREEN */
 
     .profile {
       min-height: 780px;
       padding: 40px 5vw 90px;
-
       display: grid;
       grid-template-columns: 1.08fr .92fr;
       gap: 8vw;
-
       align-items: center;
-
       border-bottom: 1px solid var(--line);
     }
-
 
     /* PORTRAIT */
 
@@ -131,34 +124,23 @@
       display: block;
       width: 100%;
       height: auto;
-
       filter:
         saturate(.88)
         contrast(1.03);
-
       transition:
         transform .22s ease,
         filter .22s ease;
     }
 
-    /* subtle red ghost */
-
     .portrait-frame::after {
       content: "";
-
       position: absolute;
       inset: 0;
-
       background: rgba(123, 23, 30, .13);
-
       mix-blend-mode: multiply;
-
       opacity: 0;
-
       transform: translate(0, 0);
-
       pointer-events: none;
-
       transition:
         opacity .18s ease,
         transform .18s ease;
@@ -179,17 +161,13 @@
     .portrait-data {
       display: flex;
       justify-content: space-between;
-
       padding-top: 9px;
-
       font-family: "Courier New", monospace;
       font-size: 9px;
       color: var(--red);
-
       text-transform: uppercase;
       letter-spacing: .04em;
     }
-
 
     /* PROFILE TEXT */
 
@@ -201,27 +179,18 @@
 
     .profile-label {
       font-family: "Courier New", monospace;
-
       font-size: 9px;
-
       color: var(--red);
-
       letter-spacing: .09em;
-
       margin-bottom: 48px;
     }
 
     .profile-name {
       font-family: Georgia, "Times New Roman", serif;
-
       font-weight: 400;
-
       font-size: clamp(55px, 6.2vw, 105px);
-
       line-height: .88;
-
       letter-spacing: -.045em;
-
       margin-bottom: 55px;
     }
 
@@ -232,11 +201,8 @@
 
     .statement {
       max-width: 560px;
-
       font-family: Georgia, "Times New Roman", serif;
-
       font-size: clamp(20px, 1.75vw, 27px);
-
       line-height: 1.43;
     }
 
@@ -247,43 +213,29 @@
     .margin-note {
       margin-top: 80px;
       margin-left: 35%;
-
       width: 230px;
-
       font-family: Georgia, "Times New Roman", serif;
-
       font-size: 13px;
       line-height: 1.45;
-
       font-style: italic;
-
       color: var(--red);
     }
-
 
     /* ARTIST BIO */
 
     .bio {
       padding: 125px 5vw 150px;
-
       display: grid;
-
       grid-template-columns: 150px 1fr;
-
       gap: 7vw;
-
       border-bottom: 1px solid var(--line);
     }
 
     .section-label {
       font-family: "Courier New", monospace;
-
       font-size: 9px;
-
       line-height: 1.55;
-
       color: var(--red);
-
       letter-spacing: .05em;
     }
 
@@ -293,15 +245,10 @@
 
     .bio-lead {
       max-width: 900px;
-
       margin-bottom: 85px;
-
       font-family: Georgia, "Times New Roman", serif;
-
       font-size: clamp(30px, 3.4vw, 52px);
-
       line-height: 1.17;
-
       font-weight: 400;
     }
 
@@ -314,11 +261,8 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 7vw;
-
       max-width: 950px;
-
       font-family: Georgia, "Times New Roman", serif;
-
       font-size: 16px;
       line-height: 1.7;
     }
@@ -327,18 +271,13 @@
       margin-top: 25px;
     }
 
-
     /* PERSONAL INDEX */
 
     .index {
       padding: 125px 5vw 160px;
-
       display: grid;
-
       grid-template-columns: 150px 1fr;
-
       gap: 7vw;
-
       border-bottom: 1px solid var(--line);
     }
 
@@ -348,29 +287,21 @@
 
     .index-title {
       max-width: 850px;
-
       margin-bottom: 70px;
-
       font-family: Georgia, "Times New Roman", serif;
-
       font-size: clamp(38px, 4.5vw, 70px);
-
       font-weight: 400;
-
       line-height: 1.05;
     }
 
     .things {
       font-family: Georgia, "Times New Roman", serif;
-
       font-size: clamp(21px, 2.3vw, 35px);
-
       line-height: 1.62;
     }
 
     .thing {
       cursor: crosshair;
-
       transition:
         color .12s ease,
         text-shadow .12s ease;
@@ -378,57 +309,39 @@
 
     .thing:hover {
       color: var(--red);
-
       text-shadow:
         3px 0 rgba(123, 23, 30, .14);
     }
-
 
     /* DARK ENDING */
 
     .ending {
       position: relative;
-
       min-height: 720px;
-
       padding: 70px 5vw;
-
       background: #181515;
       color: #e5dfd7;
-
       overflow: hidden;
     }
 
     .ending-label {
       font-family: "Courier New", monospace;
-
       font-size: 9px;
-
       color: #a83b43;
-
       letter-spacing: .08em;
     }
 
     .ending-text {
       position: absolute;
-
       left: 50%;
       top: 47%;
-
       transform: translate(-50%, -50%);
-
       width: min(1050px, 86vw);
-
       text-align: center;
-
       font-family: Georgia, "Times New Roman", serif;
-
       font-size: clamp(42px, 6.5vw, 100px);
-
       font-weight: 400;
-
       line-height: .94;
-
       letter-spacing: -.035em;
     }
 
@@ -439,37 +352,24 @@
 
     .lonely {
       position: absolute;
-
       left: 5vw;
       bottom: 40px;
-
       color: #99918c;
-
       font-family: Georgia, "Times New Roman", serif;
-
       font-size: 13px;
-
       font-style: italic;
     }
 
     .call {
       position: absolute;
-
       right: 5vw;
       bottom: 40px;
-
       color: #a83b43;
-
       font-family: Georgia, "Times New Roman", serif;
-
       font-size: 14px;
-
       cursor: pointer;
-
       border-bottom: 1px solid #a83b43;
-
       padding-bottom: 3px;
-
       transition:
         letter-spacing .2s ease,
         color .2s ease;
@@ -480,29 +380,20 @@
       color: #d36b72;
     }
 
-
     /* CALL LOG */
 
     .call-log {
       position: fixed;
-
       right: 28px;
       bottom: 28px;
-
       width: 330px;
-
       padding: 20px;
-
       background: var(--paper);
       color: var(--ink);
-
       border: 1px solid var(--red);
-
       box-shadow:
         8px 8px 0 rgba(123, 23, 30, .24);
-
       z-index: 1000;
-
       display: none;
     }
 
@@ -512,7 +403,6 @@
     }
 
     @keyframes callOpen {
-
       0% {
         opacity: 0;
         transform: translateX(12px);
@@ -526,19 +416,14 @@
         opacity: 1;
         transform: translateX(0);
       }
-
     }
 
     .call-head {
       display: flex;
       justify-content: space-between;
-
       margin-bottom: 48px;
-
       color: var(--red);
-
       font-family: "Courier New", monospace;
-
       font-size: 9px;
     }
 
@@ -549,62 +434,41 @@
 
     .call-log h3 {
       margin-bottom: 25px;
-
       font-family: Georgia, "Times New Roman", serif;
-
       font-size: 29px;
-
       line-height: 1.08;
-
       font-weight: 400;
     }
 
     .call-log p {
       font-family: "Courier New", monospace;
-
       font-size: 10px;
-
       line-height: 1.65;
     }
 
     .leave-message {
       margin-top: 42px;
-
       padding-bottom: 7px;
-
       border-bottom: 1px solid var(--ink);
-
       color: var(--grey);
-
       font-family: "Courier New", monospace;
-
       font-size: 10px;
     }
-
 
     /* CURSOR */
 
     .cursor {
       position: fixed;
-
       left: 0;
       top: 0;
-
       width: 7px;
       height: 7px;
-
       border-radius: 50%;
-
       background: var(--red);
-
       transform: translate(-50%, -50%);
-
       pointer-events: none;
-
       z-index: 9999;
-
       opacity: .75;
-
       transition:
         width .15s ease,
         height .15s ease,
@@ -617,11 +481,9 @@
       opacity: .28;
     }
 
-
     /* MOBILE */
 
     @media (max-width: 800px) {
-
       header {
         padding-left: 5vw;
         padding-right: 5vw;
@@ -638,11 +500,8 @@
 
       .profile {
         grid-template-columns: 1fr;
-
         min-height: auto;
-
         gap: 75px;
-
         padding-top: 60px;
       }
 
@@ -662,7 +521,6 @@
       .bio,
       .index {
         grid-template-columns: 1fr;
-
         gap: 60px;
       }
 
@@ -681,23 +539,19 @@
       .call-log {
         left: 5vw;
         right: auto;
-
         width: 90vw;
       }
 
       .cursor {
         display: none;
       }
-
     }
   </style>
 </head>
 
-
 <body>
 
   <div class="cursor" id="cursor"></div>
-
 
   <!-- HEADER -->
 
@@ -729,7 +583,6 @@
 
   </header>
 
-
   <!-- ARCHIVE DATA -->
 
   <div class="top-info">
@@ -748,11 +601,9 @@
 
   </div>
 
-
   <!-- PROFILE -->
 
   <main class="profile">
-
 
     <div class="portrait-area">
 
@@ -776,7 +627,6 @@
       </div>
 
     </div>
-
 
     <div class="profile-text">
 
@@ -808,9 +658,7 @@
 
     </div>
 
-
   </main>
-
 
   <!-- ARTIST BIO -->
 
@@ -823,7 +671,6 @@
 
     </div>
 
-
     <div class="bio-content">
 
       <h2 class="bio-lead">
@@ -834,9 +681,7 @@
 
       </h2>
 
-
       <div class="bio-columns">
-
 
         <div>
 
@@ -853,7 +698,6 @@
           </p>
 
         </div>
-
 
         <div>
 
@@ -880,13 +724,11 @@
 
         </div>
 
-
       </div>
 
     </div>
 
   </section>
-
 
   <!-- PERSONAL INDEX -->
 
@@ -899,7 +741,6 @@
 
     </div>
 
-
     <div class="index-content">
 
       <h2 class="index-title">
@@ -910,7 +751,6 @@
         or never want to stop looking for.
 
       </h2>
-
 
       <div class="things">
 
@@ -944,7 +784,6 @@
 
   </section>
 
-
   <!-- ENDING -->
 
   <section class="ending">
@@ -952,7 +791,6 @@
     <div class="ending-label">
       03 / PERSONAL NOTE
     </div>
-
 
     <h2 class="ending-text">
 
@@ -966,11 +804,9 @@
 
     </h2>
 
-
     <div class="lonely">
       I want a lonely but perfect space.
     </div>
-
 
     <div
       class="call"
@@ -980,7 +816,6 @@
     </div>
 
   </section>
-
 
   <!-- CALL WINDOW -->
 
@@ -1004,11 +839,9 @@
 
     </div>
 
-
     <h3>
       Chang Shu is currently unavailable.
     </h3>
-
 
     <p>
       TIME / UNKNOWN<br>
@@ -1016,13 +849,11 @@
       CONNECTION / UNSTABLE
     </p>
 
-
     <div class="leave-message">
       leave a message _
     </div>
 
   </div>
-
 
   <script>
 
@@ -1030,7 +861,6 @@
 
     const cursor =
       document.getElementById("cursor");
-
 
     document.addEventListener(
       "mousemove",
@@ -1045,12 +875,10 @@
       }
     );
 
-
     const interactive =
       document.querySelectorAll(
         "a, .thing, .call, .portrait-frame"
       );
-
 
     interactive.forEach(
       function(item) {
@@ -1066,7 +894,6 @@
           }
         );
 
-
         item.addEventListener(
           "mouseleave",
           function() {
@@ -1081,7 +908,6 @@
       }
     );
 
-
     /* CALL WINDOW */
 
     const callButton =
@@ -1093,7 +919,6 @@
     const closeCall =
       document.getElementById("closeCall");
 
-
     callButton.addEventListener(
       "click",
       function() {
@@ -1102,7 +927,6 @@
 
       }
     );
-
 
     closeCall.addEventListener(
       "click",
@@ -1113,12 +937,10 @@
       }
     );
 
-
     /* VERY SMALL RANDOM IMAGE GLITCH */
 
     const portrait =
       document.getElementById("portrait");
-
 
     function glitchPortrait() {
 
@@ -1136,146 +958,12 @@
 
     }
 
-
     setInterval(
       glitchPortrait,
       11000
     );
 
   </script>
-<script>
-  /* BLOOD TRACE */
 
-  const bloodCanvas = document.createElement("canvas");
-
-  bloodCanvas.style.position = "fixed";
-  bloodCanvas.style.left = "0";
-  bloodCanvas.style.top = "0";
-  bloodCanvas.style.width = "100%";
-  bloodCanvas.style.height = "100%";
-  bloodCanvas.style.pointerEvents = "none";
-  bloodCanvas.style.zIndex = "9998";
-  bloodCanvas.style.opacity = "0.55";
-
-  document.body.appendChild(bloodCanvas);
-
-  const bloodCtx = bloodCanvas.getContext("2d");
-
-  let bloodPoints = [];
-  let lastBloodPoint = null;
-
-
-  function resizeBloodCanvas() {
-    bloodCanvas.width = window.innerWidth;
-    bloodCanvas.height = window.innerHeight;
-  }
-
-  resizeBloodCanvas();
-
-  window.addEventListener("resize", resizeBloodCanvas);
-
-
-  document.addEventListener("mousemove", function(event) {
-
-    const currentPoint = {
-      x: event.clientX,
-      y: event.clientY,
-      life: 1
-    };
-
-    if (lastBloodPoint) {
-
-      const dx =
-        currentPoint.x - lastBloodPoint.x;
-
-      const dy =
-        currentPoint.y - lastBloodPoint.y;
-
-      const distance =
-        Math.sqrt(dx * dx + dy * dy);
-
-      if (distance > 3) {
-
-        bloodPoints.push({
-          x1: lastBloodPoint.x,
-          y1: lastBloodPoint.y,
-          x2: currentPoint.x,
-          y2: currentPoint.y,
-          life: 1,
-          width:
-            Math.max(
-              0.45,
-              Math.min(1.5, 8 / distance)
-            )
-        });
-
-      }
-
-    }
-
-    lastBloodPoint = currentPoint;
-
-  });
-
-
-  document.addEventListener("mouseleave", function() {
-    lastBloodPoint = null;
-  });
-
-
-  function drawBloodTrace() {
-
-    bloodCtx.clearRect(
-      0,
-      0,
-      bloodCanvas.width,
-      bloodCanvas.height
-    );
-
-    bloodPoints.forEach(function(point) {
-
-      point.life -= 0.012;
-
-      bloodCtx.beginPath();
-
-      bloodCtx.moveTo(
-        point.x1,
-        point.y1
-      );
-
-      bloodCtx.lineTo(
-        point.x2,
-        point.y2
-      );
-
-      bloodCtx.strokeStyle =
-        "rgba(123, 23, 30, " +
-        Math.max(0, point.life * 0.38) +
-        ")";
-
-      bloodCtx.lineWidth =
-        point.width;
-
-      bloodCtx.lineCap = "round";
-
-      bloodCtx.stroke();
-
-    });
-
-
-    bloodPoints =
-      bloodPoints.filter(function(point) {
-        return point.life > 0;
-      });
-
-
-    requestAnimationFrame(drawBloodTrace);
-
-  }
-
-
-  drawBloodTrace();
-</script>
-  
 </body>
 </html>

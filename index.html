@@ -1,17 +1,30 @@
 <!DOCTYPE html>
-<!-- Portfolio website -->
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Chang Shu — Portfolio</title>
+  <title>Chang Shu — Archive</title>
 
   <style>
+
+    /* =========================
+       BASE
+    ========================== */
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+    }
+
+    :root {
+      --paper: #eeeae2;
+      --ink: #151414;
+      --muted: #77716c;
+      --blood: #781b22;
+      --line: rgba(20, 18, 18, .32);
     }
 
     html {
@@ -19,9 +32,15 @@
     }
 
     body {
-      background: #08090b;
-      color: #f2f1ee;
-      font-family: Georgia, "Times New Roman", serif;
+      background: var(--paper);
+      color: var(--ink);
+
+      font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+      overflow-x: hidden;
     }
 
     a {
@@ -29,358 +48,1000 @@
       text-decoration: none;
     }
 
-    /* NAVIGATION */
+
+    /* =========================
+       HEADER
+    ========================== */
 
     header {
-      height: 140px;
-      padding: 0 4.7vw;
-      border-bottom: 1px solid #34363d;
+      width: 100%;
+      padding: 38px 4vw 25px;
 
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
     }
 
-    .logo {
-      font-size: 42px;
-      font-weight: 600;
+    .identity {
+      text-align: center;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 24px;
+      letter-spacing: .04em;
+
+      margin-bottom: 48px;
     }
 
     nav {
-      display: flex;
-      gap: 60px;
-      align-items: center;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 16px;
+    }
+
+    nav a:nth-child(1) {
+      text-align: left;
+    }
+
+    nav a:nth-child(2),
+    nav a:nth-child(3) {
+      text-align: center;
+    }
+
+    nav a:nth-child(4) {
+      text-align: right;
     }
 
     nav a {
-      font-size: 30px;
+      transition: color .2s ease;
     }
 
-    /* HERO */
-
-    .hero {
-      padding: 65px 4.7vw 50px;
+    nav a:hover {
+      color: var(--blood);
     }
 
-    .hero-top {
+
+    /* =========================
+       ARCHIVE INFORMATION
+    ========================== */
+
+    .archive-meta {
+      padding: 24px 4vw;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      font-size: 11px;
+      line-height: 1.5;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .archive-meta-right {
+      color: var(--blood);
+      text-align: right;
+    }
+
+
+    /* =========================
+       MAIN ARCHIVE SPACE
+    ========================== */
+
+    .archive {
+      position: relative;
+
+      width: 100%;
+      height: 1050px;
+
+      border-bottom: 1px solid var(--line);
+    }
+
+
+    /* =========================
+       PROJECT OBJECT
+    ========================== */
+
+    .project {
+      position: absolute;
+
+      display: block;
+
+      cursor: pointer;
+    }
+
+    .object {
+      position: relative;
+
+      background: #d8d3ca;
+      overflow: hidden;
+
+      transition:
+        transform .35s ease,
+        filter .35s ease;
+    }
+
+    .object::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      opacity: 0;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(120, 27, 34, .55),
+          transparent 35%
+        );
+
+      mix-blend-mode: multiply;
+
+      transform: translateX(-8px);
+
+      transition:
+        opacity .15s ease,
+        transform .25s ease;
+
+      pointer-events: none;
+    }
+
+    .project:hover .object {
+      transform:
+        translateY(-5px)
+        rotate(-.4deg);
+    }
+
+    .project:hover .object::before {
+      opacity: 1;
+      transform: translateX(4px);
+    }
+
+
+    /* =========================
+       PLACEHOLDER VISUALS
+    ========================== */
+
+    .visual-1 {
+      width: 330px;
+      height: 230px;
+
+      background:
+        radial-gradient(
+          circle at 58% 44%,
+          #721d25 0 7%,
+          #30292a 8% 19%,
+          #b5afa4 20% 21%,
+          #d8d3ca 22% 100%
+        );
+    }
+
+    .visual-2 {
+      width: 190px;
+      height: 270px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #181718 0 30%,
+          #5c181e 31% 38%,
+          #aaa39a 39% 41%,
+          #d8d3ca 42%
+        );
+    }
+
+    .visual-3 {
+      width: 250px;
+      height: 170px;
+
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #c7c1b8,
+          #c7c1b8 10px,
+          #191819 11px,
+          #191819 12px
+        );
+    }
+
+    .visual-4 {
+      width: 175px;
+      height: 175px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          #181718 0 17%,
+          #7b2026 18% 20%,
+          #d5cfc5 21% 47%,
+          #171616 48% 49%,
+          #d8d3ca 50%
+        );
+    }
+
+    .visual-5 {
+      width: 290px;
+      height: 190px;
+
+      background:
+        linear-gradient(
+          30deg,
+          #d8d3ca 0 39%,
+          #711a21 40% 42%,
+          #171616 43% 62%,
+          #aaa49b 63%
+        );
+    }
+
+
+    /* =========================
+       PROJECT LABEL
+    ========================== */
+
+    .project-label {
+      margin-top: 11px;
+
+      display: flex;
+      gap: 13px;
+
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    .number {
+      color: var(--blood);
+    }
+
+    .project-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 14px;
+    }
+
+    .project-info {
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+
+    /* =========================
+       PROJECT POSITIONS
+    ========================== */
+
+    .p1 {
+      top: 65px;
+      left: 12%;
+    }
+
+    .p2 {
+      top: 125px;
+      right: 13%;
+    }
+
+    .p3 {
+      top: 470px;
+      left: 38%;
+    }
+
+    .p4 {
+      top: 650px;
+      left: 10%;
+    }
+
+    .p5 {
+      top: 710px;
+      right: 12%;
+    }
+
+
+    /* =========================
+       SECRET ANNOTATION
+    ========================== */
+
+    .annotation {
+      position: absolute;
+
+      top: 390px;
+      right: 7%;
+
+      width: 230px;
+
+      color: var(--blood);
+
+      font-family: Georgia, "Times New Roman", serif;
+      font-style: italic;
+      font-size: 17px;
+      line-height: 1.35;
+    }
+
+    .annotation::before {
+      content: "NOTE / 00";
+      display: block;
+
+      margin-bottom: 8px;
+
+      font-family: "Courier New", monospace;
+      font-style: normal;
+
+      font-size: 9px;
+      letter-spacing: .08em;
+    }
+
+
+    /* =========================
+       INDEX SECTION
+    ========================== */
+
+    .index-section {
+      padding: 110px 4vw 150px;
+    }
+
+    .section-label {
+      display: flex;
+      justify-content: space-between;
+
+      padding-bottom: 15px;
+
+      border-bottom: 1px solid var(--line);
+
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .work-row {
+      position: relative;
+
+      display: grid;
+      grid-template-columns:
+        70px
+        1fr
+        200px
+        100px;
+
+      align-items: center;
+
+      min-height: 82px;
+
+      border-bottom: 1px solid var(--line);
+
+      cursor: pointer;
+
+      transition:
+        padding-left .2s ease,
+        color .2s ease;
+    }
+
+    .work-row:hover {
+      padding-left: 10px;
+      color: var(--blood);
+    }
+
+    .work-number {
+      font-size: 11px;
+      color: var(--blood);
+    }
+
+    .work-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(22px, 3vw, 42px);
+    }
+
+    .work-type,
+    .work-year {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+      min-height: 420px;
+
+      background: #181616;
+      color: #ddd7ce;
+
+      padding: 65px 4vw 40px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .footer-top {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
     }
 
-    .category {
-      color: #a7a8af;
-      font-size: 27px;
-      line-height: 1.35;
-    }
-
-    .statement {
-      color: #d75b65;
-      font-size: 26px;
-      line-height: 1.4;
-      text-align: right;
-    }
-
-    h1 {
-      font-size: clamp(90px, 14vw, 190px);
+    .footer-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(45px, 7vw, 105px);
       font-weight: 400;
-      line-height: 0.9;
-      letter-spacing: -0.06em;
-
-      margin-top: 70px;
-      margin-bottom: 75px;
+      line-height: .9;
     }
 
-    /* FEATURE PROJECT */
+    .footer-note {
+      color: #9d333b;
 
-    .feature {
-      height: 600px;
-      position: relative;
-      overflow: hidden;
+      width: 240px;
 
-      background:
-        linear-gradient(
-          135deg,
-          #252326,
-          #121316
-        );
-    }
+      font-family: Georgia, "Times New Roman", serif;
+      font-style: italic;
 
-    .feature-placeholder {
-      width: 100%;
-      height: 100%;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      color: #6f7075;
       font-size: 18px;
-      letter-spacing: 0.08em;
+      line-height: 1.4;
     }
 
-    .feature::after {
-      content: "";
-      position: absolute;
-      inset: 0;
+    .footer-bottom {
+      border-top: 1px solid #4a4543;
 
-      background:
-        linear-gradient(
-          to bottom,
-          transparent 45%,
-          rgba(0,0,0,.85)
-        );
-    }
-
-    .project-name {
-      position: absolute;
-      z-index: 2;
-
-      left: 5%;
-      bottom: 8%;
-
-      font-size: 25px;
-    }
-
-    .project-arrow {
-      position: absolute;
-      z-index: 2;
-
-      right: 5%;
-      bottom: 8%;
-
-      font-size: 32px;
-    }
-
-    /* INTRO */
-
-    .intro {
-      padding-top: 48px;
-    }
-
-    .intro-label {
-      color: #a7a8af;
-
-      font-size: 26px;
-      margin-bottom: 42px;
-    }
-
-    .intro-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-    }
-
-    .roles {
-      font-size: 30px;
-      line-height: 1.55;
-    }
-
-    .explore {
-      font-size: 29px;
-    }
-
-    .explore span {
-      margin-left: 25px;
-    }
-
-    .line {
-      height: 1px;
-      background: #34363d;
-      margin-top: 18px;
-    }
-
-    /* BOTTOM */
-
-    .hero-bottom {
-      margin-top: 90px;
-      padding-bottom: 35px;
-
-      border-bottom: 1px solid #34363d;
+      padding-top: 20px;
 
       display: flex;
       justify-content: space-between;
 
-      color: #a7a8af;
-      font-size: 25px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
     }
 
-    .hero-bottom-right {
-      text-align: right;
+
+    /* =========================
+       CURSOR
+    ========================== */
+
+    .cursor {
+      width: 11px;
+      height: 11px;
+
+      background: var(--blood);
+
+      border-radius: 50%;
+
+      position: fixed;
+      left: 0;
+      top: 0;
+
+      z-index: 9999;
+
+      pointer-events: none;
+
+      transform: translate(-50%, -50%);
+
+      mix-blend-mode: multiply;
+
+      transition:
+        width .15s ease,
+        height .15s ease;
     }
 
-    /* WORKS PLACEHOLDER */
 
-    #works {
-      padding: 120px 4.7vw;
-      min-height: 100vh;
-    }
+    /* =========================
+       MOBILE
+    ========================== */
 
-    #works h2 {
-      font-size: clamp(70px, 10vw, 140px);
-      font-weight: 400;
-      letter-spacing: -0.05em;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 700px) {
+    @media (max-width: 800px) {
 
       header {
-        height: 95px;
+        padding-top: 25px;
       }
 
-      .logo {
-        font-size: 25px;
+      .identity {
+        margin-bottom: 30px;
       }
 
       nav {
-        gap: 20px;
+        font-size: 13px;
       }
 
-      nav a {
-        font-size: 17px;
+      .archive {
+        height: auto;
+        padding: 60px 7vw 100px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 70px;
       }
 
-      .hero {
-        padding-top: 40px;
+      .project {
+        position: relative;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
       }
 
-      .category,
-      .statement {
-        font-size: 17px;
+      .object {
+        max-width: 100%;
       }
 
-      h1 {
-        margin-top: 55px;
-        margin-bottom: 45px;
+      .annotation {
+        position: relative;
+
+        top: auto;
+        right: auto;
+
+        width: 70%;
+
+        margin-left: auto;
       }
 
-      .feature {
-        height: 500px;
+      .work-row {
+        grid-template-columns:
+          45px
+          1fr
+          60px;
       }
 
-      .intro-grid {
-        grid-template-columns: 1fr;
+      .work-type {
+        display: none;
       }
 
-      .hero-bottom {
-        font-size: 17px;
+      .footer-top {
+        flex-direction: column;
+        gap: 70px;
+      }
+
+      .cursor {
+        display: none;
       }
     }
+
   </style>
 </head>
 
+
 <body>
 
-  <header>
 
-    <a class="logo" href="#">
+  <!-- CUSTOM CURSOR -->
+
+  <div class="cursor"></div>
+
+
+  <!-- HEADER -->
+
+  <header id="main">
+
+    <div class="identity">
       Chang Shu
-    </a>
+    </div>
 
     <nav>
-      <a href="#works">Works</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact ↗</a>
+
+      <a href="#main">
+        Main
+      </a>
+
+      <a href="#works">
+        Works
+      </a>
+
+      <a href="#about">
+        About
+      </a>
+
+      <a href="mailto:your@email.com">
+        Contact
+      </a>
+
     </nav>
 
   </header>
 
 
-  <main class="hero">
 
-    <div class="hero-top">
+  <!-- ARCHIVE INFORMATION -->
 
-      <div class="category">
-        INTERACTION / DIGITAL<br>
-        MEDIA / GAMES
-      </div>
+  <div class="archive-meta">
 
-      <div class="statement">
-        Between the real &amp; the<br>
-        imagined.
-      </div>
-
+    <div>
+      CHANG SHU ARCHIVE<br>
+      INTERACTION / DIGITAL MEDIA / GAMES<br>
+      2022—2026
     </div>
 
-
-    <h1>Chang Shu</h1>
-
-
-    <div class="feature">
-
-      <div class="feature-placeholder">
-        HEART BENEATH BETHLEHEM — IMAGE
-      </div>
-
-      <div class="project-name">
-        01 / HEART BENEATH BETHLEHEM
-      </div>
-
-      <div class="project-arrow">
-        ↗
-      </div>
-
+    <div class="archive-meta-right">
+      INDEX STATUS: OPEN<br>
+      05 OBJECTS RECOVERED
     </div>
 
-
-    <section class="intro">
-
-      <div class="intro-label">
-        DESIGNER &amp; IMAGE MAKER
-      </div>
+  </div>
 
 
-      <div class="intro-grid">
 
-        <div class="roles">
-          Interaction Designer<br>
-          Digital Media Artist<br>
-          Game Designer
-        </div>
+  <!-- MAIN ARTWORK SPACE -->
+
+  <main class="archive">
 
 
-        <a class="explore" href="#works">
+    <!-- PROJECT 01 -->
 
-          Explore selected works
-          <span>↓</span>
+    <a class="project p1" href="#works">
 
-          <div class="line"></div>
+      <div class="object visual-1"></div>
 
-        </a>
+      <div class="project-label">
 
-      </div>
-
-
-      <div class="hero-bottom">
+        <span class="number">
+          01
+        </span>
 
         <div>
-          SCROLL TO ENTER
-          &nbsp;&nbsp;&nbsp; ↓
-        </div>
 
-        <div class="hero-bottom-right">
-          SELECTED<br>
-          EXPERIMENTS &amp;<br>
-          NARRATIVES
+          <div class="project-title">
+            Heart Beneath Bethlehem
+          </div>
+
+          <div class="project-info">
+            Installation / Visual Narrative · 2025
+          </div>
+
         </div>
 
       </div>
 
-    </section>
+    </a>
+
+
+
+    <!-- PROJECT 02 -->
+
+    <a class="project p2" href="#works">
+
+      <div class="object visual-2"></div>
+
+      <div class="project-label">
+
+        <span class="number">
+          02
+        </span>
+
+        <div>
+
+          <div class="project-title">
+            Algorithmic Tremor
+          </div>
+
+          <div class="project-info">
+            Interactive Installation · 2025
+          </div>
+
+        </div>
+
+      </div>
+
+    </a>
+
+
+
+    <!-- PROJECT 03 -->
+
+    <a class="project p3" href="#works">
+
+      <div class="object visual-3"></div>
+
+      <div class="project-label">
+
+        <span class="number">
+          03
+        </span>
+
+        <div>
+
+          <div class="project-title">
+            Abyssal Relics
+          </div>
+
+          <div class="project-info">
+            Speculative Archive · 2025
+          </div>
+
+        </div>
+
+      </div>
+
+    </a>
+
+
+
+    <!-- PROJECT 04 -->
+
+    <a class="project p4" href="#works">
+
+      <div class="object visual-4"></div>
+
+      <div class="project-label">
+
+        <span class="number">
+          04
+        </span>
+
+        <div>
+
+          <div class="project-title">
+            IN THE HOLLOW VESSEL
+          </div>
+
+          <div class="project-info">
+            Narrative Game · 2026
+          </div>
+
+        </div>
+
+      </div>
+
+    </a>
+
+
+
+    <!-- PROJECT 05 -->
+
+    <a class="project p5" href="#works">
+
+      <div class="object visual-5"></div>
+
+      <div class="project-label">
+
+        <span class="number">
+          05
+        </span>
+
+        <div>
+
+          <div class="project-title">
+            Selected Experiments
+          </div>
+
+          <div class="project-info">
+            Digital Media / Ongoing
+          </div>
+
+        </div>
+
+      </div>
+
+    </a>
+
+
+
+    <!-- RED ANNOTATION -->
+
+    <div class="annotation">
+      Between the real
+      &amp; the imagined.
+    </div>
+
 
   </main>
 
 
-  <section id="works">
 
-    <h2>
-      Selected<br>
-      Works
-    </h2>
+  <!-- WORK INDEX -->
+
+  <section
+    class="index-section"
+    id="works"
+  >
+
+    <div class="section-label">
+
+      <span>
+        Selected Works
+      </span>
+
+      <span>
+        Archive Index / 01—05
+      </span>
+
+    </div>
+
+
+    <a class="work-row" href="#">
+
+      <span class="work-number">
+        01
+      </span>
+
+      <span class="work-title">
+        Heart Beneath Bethlehem
+      </span>
+
+      <span class="work-type">
+        Installation
+      </span>
+
+      <span class="work-year">
+        2025
+      </span>
+
+    </a>
+
+
+    <a class="work-row" href="#">
+
+      <span class="work-number">
+        02
+      </span>
+
+      <span class="work-title">
+        Algorithmic Tremor
+      </span>
+
+      <span class="work-type">
+        Interactive
+      </span>
+
+      <span class="work-year">
+        2025
+      </span>
+
+    </a>
+
+
+    <a class="work-row" href="#">
+
+      <span class="work-number">
+        03
+      </span>
+
+      <span class="work-title">
+        Abyssal Relics
+      </span>
+
+      <span class="work-type">
+        Speculative Archive
+      </span>
+
+      <span class="work-year">
+        2025
+      </span>
+
+    </a>
+
+
+    <a class="work-row" href="#">
+
+      <span class="work-number">
+        04
+      </span>
+
+      <span class="work-title">
+        IN THE HOLLOW VESSEL
+      </span>
+
+      <span class="work-type">
+        Game
+      </span>
+
+      <span class="work-year">
+        2026
+      </span>
+
+    </a>
+
+
+    <a class="work-row" href="#">
+
+      <span class="work-number">
+        05
+      </span>
+
+      <span class="work-title">
+        Selected Experiments
+      </span>
+
+      <span class="work-type">
+        Digital Media
+      </span>
+
+      <span class="work-year">
+        Ongoing
+      </span>
+
+    </a>
 
   </section>
 
+
+
+  <!-- FOOTER / ABOUT PREVIEW -->
+
+  <footer id="about">
+
+    <div class="footer-top">
+
+      <h2 class="footer-title">
+        Chang<br>
+        Shu
+      </h2>
+
+      <div class="footer-note">
+        An archive of images,
+        systems, rituals and
+        imagined spaces.
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <span>
+        Interaction Designer /
+        Digital Media Artist /
+        Game Designer
+      </span>
+
+      <span>
+        © 2026 Chang Shu
+      </span>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- INTERACTION -->
+
+  <script>
+
+    const cursor =
+      document.querySelector(".cursor");
+
+    document.addEventListener(
+      "mousemove",
+      (event) => {
+
+        cursor.style.left =
+          event.clientX + "px";
+
+        cursor.style.top =
+          event.clientY + "px";
+
+      }
+    );
+
+
+    const projects =
+      document.querySelectorAll(
+        ".project, .work-row, nav a"
+      );
+
+
+    projects.forEach((item) => {
+
+      item.addEventListener(
+        "mouseenter",
+        () => {
+
+          cursor.style.width = "28px";
+          cursor.style.height = "28px";
+
+        }
+      );
+
+
+      item.addEventListener(
+        "mouseleave",
+        () => {
+
+          cursor.style.width = "11px";
+          cursor.style.height = "11px";
+
+        }
+      );
+
+    });
+
+  </script>
+
+
 </body>
+
 </html>

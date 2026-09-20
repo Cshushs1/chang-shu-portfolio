@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,17 +9,17 @@
 
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     :root {
-      --paper: #f1eee8;
-      --ink: #161414;
-      --red: #7a1720;
-      --grey: #77716d;
-      --line: rgba(22, 20, 20, .28);
+      --paper: #f2f0eb;
+      --ink: #111111;
+      --red: #7b1820;
+      --grey: #77736d;
+      --line: rgba(15, 15, 15, 0.25);
     }
 
     html {
@@ -30,6 +31,7 @@
       color: var(--ink);
       font-family: Arial, Helvetica, sans-serif;
       cursor: crosshair;
+      overflow-x: hidden;
     }
 
     a {
@@ -37,18 +39,21 @@
       text-decoration: none;
     }
 
-    /* HEADER */
+
+    /* =========================
+       HEADER
+    ========================= */
 
     header {
-      padding: 28px 3vw 18px;
+      padding: 30px 4vw 20px;
       border-bottom: 1px solid var(--line);
     }
 
-    .name {
-      font-family: Georgia, "Times New Roman", serif;
+    .site-name {
       text-align: center;
-      font-size: 22px;
-      margin-bottom: 36px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 21px;
+      margin-bottom: 38px;
     }
 
     nav {
@@ -71,467 +76,964 @@
       text-align: right;
     }
 
-    nav a:hover {
+    nav a {
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover,
+    nav .active {
       color: var(--red);
     }
 
-    /* INTRO */
 
-    .intro {
-      min-height: 70vh;
-      padding: 70px 5vw 90px;
-      display: grid;
-      grid-template-columns: 140px 1fr;
-      gap: 6vw;
-    }
+    /* =========================
+       TOP ARCHIVE INFO
+    ========================= */
 
-    .archive-label {
+    .archive-info {
+      display: flex;
+      justify-content: space-between;
+      padding: 18px 4vw;
       font-family: "Courier New", monospace;
-      font-size: 10px;
-      line-height: 1.7;
+      font-size: 9px;
+      line-height: 1.6;
+      letter-spacing: .06em;
       text-transform: uppercase;
+    }
+
+    .archive-info-right {
+      color: var(--red);
+      text-align: right;
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      position: relative;
+      min-height: 820px;
+      padding: 60px 5vw 100px;
+
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 7vw;
+
+      border-bottom: 1px solid var(--line);
+    }
+
+
+    /* PHOTO */
+
+    .portrait-wrap {
+      position: relative;
+      align-self: start;
+      margin-top: 35px;
+    }
+
+    .portrait {
+      width: 100%;
+      max-width: 520px;
+      display: block;
+      filter: saturate(.86) contrast(1.02);
+      transition:
+        transform .25s ease,
+        filter .25s ease;
+    }
+
+    .portrait-wrap::after {
+      content: "";
+      position: absolute;
+
+      top: 8px;
+      left: 8px;
+
+      width: min(100%, 520px);
+      height: 100%;
+
+      border: 1px solid var(--red);
+
+      opacity: 0;
+      pointer-events: none;
+
+      transition:
+        opacity .18s ease,
+        transform .18s ease;
+
+      z-index: -1;
+    }
+
+    .portrait-wrap:hover .portrait {
+      transform: translate(-3px, -2px);
+      filter: saturate(.65) contrast(1.08);
+    }
+
+    .portrait-wrap:hover::after {
+      opacity: .65;
+      transform: translate(5px, 5px);
+    }
+
+    .photo-note {
+      margin-top: 10px;
+
+      display: flex;
+      justify-content: space-between;
+
+      max-width: 520px;
+
+      font-family: "Courier New", monospace;
+      font-size: 9px;
+
       color: var(--red);
     }
 
-    .intro-main {
-      max-width: 1000px;
+
+    /* HERO TEXT */
+
+    .hero-text {
+      position: relative;
+      padding-top: 10px;
     }
 
-    .intro-main h1 {
+    .record {
+      color: var(--red);
+
+      font-family: "Courier New", monospace;
+      font-size: 9px;
+
+      letter-spacing: .08em;
+      text-transform: uppercase;
+
+      margin-bottom: 65px;
+    }
+
+    h1 {
       font-family: Georgia, "Times New Roman", serif;
+
+      font-size: clamp(65px, 8vw, 135px);
+
+      line-height: .83;
+
       font-weight: 400;
-      font-size: clamp(55px, 9vw, 145px);
-      line-height: .85;
+
       letter-spacing: -.055em;
     }
 
-    .intro-main h1 span {
+    h1 em {
       color: var(--red);
-      font-style: italic;
-    }
-
-    .position {
-      margin-top: 42px;
-      max-width: 480px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 19px;
-      line-height: 1.4;
-    }
-
-    /* CARE */
-
-    .care {
-      padding: 100px 5vw 140px;
-      border-top: 1px solid var(--line);
-      display: grid;
-      grid-template-columns: 140px 1fr;
-      gap: 6vw;
-    }
-
-    .section-number {
-      font-family: "Courier New", monospace;
-      font-size: 10px;
-      color: var(--red);
-    }
-
-    .care-content {
-      max-width: 1050px;
-    }
-
-    .care h2 {
-      font-family: Georgia, "Times New Roman", serif;
       font-weight: 400;
-      font-size: clamp(38px, 5vw, 76px);
-      margin-bottom: 60px;
     }
 
-    .care-text {
+    .role {
+      margin-top: 55px;
+
+      max-width: 570px;
+
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(20px, 2.25vw, 34px);
+
+      font-size: clamp(18px, 1.7vw, 25px);
+
       line-height: 1.45;
     }
 
-    .care-text span {
+    .small-note {
+      position: absolute;
+
+      right: 0;
+      bottom: 5px;
+
+      width: 190px;
+
+      color: var(--red);
+
+      font-family: Georgia, "Times New Roman", serif;
+
+      font-size: 14px;
+
+      font-style: italic;
+
+      line-height: 1.4;
+    }
+
+
+    /* =========================
+       ARTIST BIO
+    ========================= */
+
+    .bio {
+      padding: 130px 5vw;
+
+      display: grid;
+
+      grid-template-columns: 160px 1fr;
+
+      gap: 7vw;
+
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-label {
+      font-family: "Courier New", monospace;
+
+      font-size: 9px;
+
+      color: var(--red);
+
+      line-height: 1.5;
+    }
+
+    .bio-content {
+      max-width: 1050px;
+    }
+
+    .bio-intro {
+      max-width: 900px;
+
+      font-family: Georgia, "Times New Roman", serif;
+
+      font-size: clamp(28px, 3.2vw, 50px);
+
+      line-height: 1.18;
+
+      margin-bottom: 80px;
+    }
+
+    .bio-intro em {
+      color: var(--red);
+      font-weight: 400;
+    }
+
+    .bio-columns {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 7vw;
+
+      font-family: Georgia, "Times New Roman", serif;
+
+      font-size: 16px;
+
+      line-height: 1.7;
+    }
+
+    .bio-columns p + p {
+      margin-top: 25px;
+    }
+
+
+    /* =========================
+       PERSONAL INDEX
+    ========================= */
+
+    .personal {
+      padding: 130px 5vw 160px;
+
+      display: grid;
+
+      grid-template-columns: 160px 1fr;
+
+      gap: 7vw;
+
+      border-bottom: 1px solid var(--line);
+    }
+
+    .personal-content {
+      max-width: 1150px;
+    }
+
+    .personal-title {
+      font-family: Georgia, "Times New Roman", serif;
+
+      font-size: clamp(40px, 5vw, 78px);
+
+      font-weight: 400;
+
+      line-height: 1;
+
+      margin-bottom: 70px;
+    }
+
+    .index-text {
+      font-family: Georgia, "Times New Roman", serif;
+
+      font-size: clamp(22px, 2.4vw, 38px);
+
+      line-height: 1.55;
+    }
+
+    .index-text span {
+      cursor: crosshair;
+
       transition:
         color .15s ease,
         text-shadow .15s ease;
     }
 
-    .care-text span:hover {
+    .index-text span:hover {
       color: var(--red);
+
       text-shadow:
-        3px 0 0 rgba(122, 23, 32, .16);
+        3px 0 rgba(123, 24, 32, .18),
+        -2px 0 rgba(123, 24, 32, .08);
     }
 
-    /* BIO */
 
-    .bio {
-      padding: 100px 5vw 140px;
-      border-top: 1px solid var(--line);
-      display: grid;
-      grid-template-columns: 140px 1fr;
-      gap: 6vw;
-    }
+    /* =========================
+       QUOTE
+    ========================= */
 
-    .bio-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 7vw;
-      max-width: 1100px;
-    }
+    .quote {
+      min-height: 750px;
 
-    .bio-title {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(45px, 7vw, 105px);
-      line-height: .9;
-      font-weight: 400;
-    }
+      background: #171414;
+      color: #e5e0d8;
 
-    .bio-copy {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 16px;
-      line-height: 1.65;
-    }
-
-    .bio-copy p + p {
-      margin-top: 25px;
-    }
-
-    /* NOTES */
-
-    .notes {
       position: relative;
-      min-height: 680px;
-      padding: 100px 5vw;
-      background: #191616;
-      color: #e5dfd6;
+
+      padding: 80px 5vw;
+
       overflow: hidden;
     }
 
-    .notes-label {
+    .quote-label {
       font-family: "Courier New", monospace;
-      color: #a73b43;
-      font-size: 10px;
-      text-transform: uppercase;
+
+      font-size: 9px;
+
+      color: #a73a43;
+
+      letter-spacing: .08em;
     }
 
-    .maze {
+    .quote-main {
       position: absolute;
-      width: min(850px, 85vw);
+
       left: 50%;
-      top: 50%;
+      top: 48%;
+
       transform: translate(-50%, -50%);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(40px, 7vw, 105px);
-      line-height: .95;
+
+      width: min(1000px, 85vw);
+
       text-align: center;
+
+      font-family: Georgia, "Times New Roman", serif;
+
+      font-size: clamp(45px, 7vw, 110px);
+
+      font-weight: 400;
+
+      line-height: .92;
+
+      letter-spacing: -.035em;
+    }
+
+    .quote-main em {
+      color: #8e252e;
+
       font-weight: 400;
     }
 
-    .maze em {
-      color: #8b252d;
-      font-weight: 400;
+    .lonely {
+      position: absolute;
+
+      left: 5vw;
+      bottom: 45px;
+
+      font-family: Georgia, "Times New Roman", serif;
+
+      font-style: italic;
+
+      color: #aaa19a;
+
+      font-size: 15px;
     }
 
-    /* CALL BUTTON */
+
+    /* =========================
+       CALL
+    ========================= */
 
     .call {
       position: absolute;
+
       right: 5vw;
       bottom: 45px;
+
+      color: #a73a43;
+
       font-family: Georgia, "Times New Roman", serif;
+
       font-size: 15px;
-      color: #a73b43;
+
       cursor: pointer;
-      border-bottom: 1px solid #a73b43;
+
+      border-bottom: 1px solid #a73a43;
+
       padding-bottom: 3px;
+
+      transition:
+        letter-spacing .2s ease,
+        color .2s ease;
     }
 
-    /* CALL LOG */
+    .call:hover {
+      letter-spacing: .06em;
+      color: #d36a71;
+    }
+
+
+    /* =========================
+       CALL LOG
+    ========================= */
 
     .call-log {
       position: fixed;
+
       right: 30px;
       bottom: 30px;
-      width: 310px;
+
+      width: 330px;
+
       background: var(--paper);
       color: var(--ink);
+
       border: 1px solid var(--red);
-      z-index: 100;
-      padding: 18px;
+
+      padding: 20px;
+
+      z-index: 1000;
+
       display: none;
+
       box-shadow:
-        8px 8px 0 rgba(122, 23, 32, .2);
+        8px 8px 0 rgba(123, 24, 32, .25);
     }
 
     .call-log.active {
       display: block;
-      animation: glitchIn .2s ease;
+
+      animation: callIn .18s ease;
     }
 
-    @keyframes glitchIn {
+    @keyframes callIn {
+
       0% {
-        transform: translateX(8px);
         opacity: 0;
+        transform: translateX(12px);
       }
 
       45% {
-        transform: translateX(-3px);
+        transform: translateX(-4px);
       }
 
       100% {
-        transform: translateX(0);
         opacity: 1;
+        transform: translateX(0);
       }
+
     }
 
     .call-top {
       display: flex;
       justify-content: space-between;
+
       font-family: "Courier New", monospace;
-      font-size: 10px;
+
+      font-size: 9px;
+
       color: var(--red);
-      margin-bottom: 40px;
+
+      margin-bottom: 50px;
     }
 
     .close {
       cursor: pointer;
+      font-size: 16px;
     }
 
     .call-log h3 {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 28px;
+
       font-weight: 400;
-      margin-bottom: 15px;
+
+      font-size: 30px;
+
+      line-height: 1.05;
+
+      margin-bottom: 25px;
     }
 
     .call-log p {
       font-family: "Courier New", monospace;
-      font-size: 11px;
-      line-height: 1.5;
+
+      font-size: 10px;
+
+      line-height: 1.6;
     }
 
     .message {
-      margin-top: 35px;
+      margin-top: 45px;
+
+      padding-bottom: 8px;
+
       border-bottom: 1px solid var(--ink);
-      padding-bottom: 7px;
+
       color: var(--grey);
+
+      font-family: "Courier New", monospace;
+
+      font-size: 10px;
     }
 
-    /* MOBILE */
 
-    @media (max-width: 750px) {
+    /* =========================
+       CURSOR DOT
+    ========================= */
 
-      .intro,
-      .care,
-      .bio {
-        grid-template-columns: 1fr;
-      }
+    .cursor-dot {
+      width: 7px;
+      height: 7px;
 
-      .intro {
-        gap: 60px;
-      }
+      position: fixed;
 
-      .bio-content {
-        grid-template-columns: 1fr;
-      }
+      left: 0;
+      top: 0;
 
-      .archive-label {
-        order: 2;
-      }
+      background: var(--red);
+
+      border-radius: 50%;
+
+      pointer-events: none;
+
+      z-index: 9999;
+
+      transform: translate(-50%, -50%);
+
+      opacity: .8;
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 800px) {
 
       nav {
         font-size: 12px;
       }
 
+      .hero {
+        grid-template-columns: 1fr;
+
+        min-height: auto;
+
+        padding-bottom: 120px;
+      }
+
+      .portrait {
+        max-width: 80vw;
+      }
+
+      .photo-note {
+        max-width: 80vw;
+      }
+
+      .hero-text {
+        padding-top: 30px;
+      }
+
+      .record {
+        margin-bottom: 35px;
+      }
+
+      .small-note {
+        position: relative;
+
+        margin-top: 70px;
+
+        width: 180px;
+      }
+
+      .bio,
+      .personal {
+        grid-template-columns: 1fr;
+
+        gap: 60px;
+      }
+
+      .bio-columns {
+        grid-template-columns: 1fr;
+      }
+
+      .quote {
+        min-height: 650px;
+      }
+
+      .lonely {
+        width: 45%;
+      }
+
       .call-log {
         left: 5vw;
         right: auto;
+
         width: 90vw;
       }
+
+      .cursor-dot {
+        display: none;
+      }
     }
+
   </style>
 </head>
 
+
 <body>
 
+  <div class="cursor-dot" id="cursor"></div>
+
+
+  <!-- HEADER -->
+
   <header>
-    <div class="name">Chang Shu</div>
+
+    <div class="site-name">
+      Chang Shu
+    </div>
 
     <nav>
-      <a href="index.html">Main</a>
-      <a href="index.html#works">Works</a>
-      <a href="about.html">About</a>
-      <a href="#">Contact</a>
+
+      <a href="index.html">
+        Main
+      </a>
+
+      <a href="index.html#works">
+        Works
+      </a>
+
+      <a class="active" href="about.html">
+        About
+      </a>
+
+      <a href="mailto:cshushs1@gmail.com">
+        Contact
+      </a>
+
     </nav>
+
   </header>
 
 
-  <section class="intro">
+  <!-- ARCHIVE INFORMATION -->
 
-    <div class="archive-label">
+  <div class="archive-info">
+
+    <div>
       PERSONAL ARCHIVE<br>
-      RECORD 00<br>
-      CHANG SHU<br><br>
-      STATUS:<br>
-      STILL LOOKING
+      RECORD 00 / ABOUT<br>
+      CHANG SHU
     </div>
 
-    <div class="intro-main">
-
-      <h1>
-        Chang Shu<br>
-        <span>illustrator</span><br>
-        &amp; cosplayer.
-      </h1>
-
-      <div class="position">
-        I paint what I like, pursue a feeling,
-        and remain curious about things
-        that do not have an answer.
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <section class="care">
-
-    <div class="section-number">
-      01 / WHAT I CARE ABOUT
-    </div>
-
-    <div class="care-content">
-
-      <h2>Things I would like to know, have, become, or never stop looking for.</h2>
-
-      <div class="care-text">
-
-        <span>Psionics.</span>
-        <span>Classical literature.</span>
-        <span>Classical music.</span>
-        <span>Fine arts, ideas and processes.</span>
-        <span>My family.</span>
-        <span>My friends.</span>
-        <span>A cozy haunted house.</span>
-        <span>A nice townhouse.</span>
-        <span>Money — a lot of it.</span>
-        <span>Effortless travelling.</span>
-        <span>A good computer.</span>
-        <span>A keyboard with a clear typing sound.</span>
-        <span>A comfortable gaming chair.</span>
-        <span>Favorite themed decorations.</span>
-        <span>A nice pair of hands and nails.</span>
-        <span>A secluded place to read and write.</span>
-        <span>A place to practice the flute.</span>
-        <span>A garden.</span>
-        <span>An elevator.</span>
-        <span>A rotating staircase.</span>
-        <span>A black Minuet cat.</span>
-        <span>How to become a vampire.</span>
-        <span>All the knowledge.</span>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <section class="bio">
-
-    <div class="section-number">
-      02 / BIO
-    </div>
-
-    <div class="bio-content">
-
-      <h2 class="bio-title">
-        Feeling<br>
-        before<br>
-        explanation.
-      </h2>
-
-      <div class="bio-copy">
-
-        <p>
-          Chang Shu is an illustrator and multidisciplinary
-          creative whose practice moves between illustration,
-          digital media, interaction and imagined worlds.
-        </p>
-
-        <p>
-          Her illustrations often construct stories through
-          imagination, dizziness, hallucination and metaphor.
-          Rather than explaining everything immediately,
-          the images invite careful observation and interpretation.
-        </p>
-
-        <p>
-          Born in China, Chang developed an early interest in
-          philosophy, literature, classical music and visual culture.
-          She is often more interested in expressing a
-          <em>feeling</em> than describing an emotion directly.
-        </p>
-
-        <p>
-          When she is not making work, she is probably reading,
-          playing games, thinking about vampires, or trying
-          not to leave the house.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <section class="notes">
-
-    <div class="notes-label">
-      03 / PERSONAL NOTE
-    </div>
-
-    <h2 class="maze">
-      Everything has<br>
-      <em>no answer.</em><br><br>
-
-      The world is just<br>
-      a giant garden maze.
-    </h2>
-
-    <div class="call" id="callButton">
-      Thank you for calling ⏰
-    </div>
-
-  </section>
-
-
-  <div class="call-log" id="callLog">
-
-    <div class="call-top">
-      <span>CALL LOG / 00</span>
-      <span class="close" id="closeCall">×</span>
-    </div>
-
-    <h3>Chang Shu is currently unavailable.</h3>
-
-    <p>
-      TIME UNKNOWN<br>
-      LOCATION UNKNOWN<br>
-      CONNECTION UNSTABLE
-    </p>
-
-    <div class="message">
-      leave a message _
+    <div class="archive-info-right">
+      ARTIST PROFILE<br>
+      STATUS: IN PROGRESS
     </div>
 
   </div>
 
 
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="portrait-wrap">
+
+      <img
+        src="portrait.jpg"
+        alt="Portrait of Chang Shu"
+        class="portrait"
+      >
+
+      <div class="photo-note">
+
+        <span>
+          FIG. 00
+        </span>
+
+        <span>
+          PERSONAL RECORD
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="hero-text">
+
+      <div class="record">
+        ARTIST / ILLUSTRATOR /
+        MULTIDISCIPLINARY CREATIVE
+      </div>
+
+      <h1>
+        Chang<br>
+        <em>Shu.</em>
+      </h1>
+
+      <div class="role">
+
+        I am interested in visual experience,
+        spiritual exploration and the unstable
+        boundary between reality and imagined worlds.
+
+      </div>
+
+      <div class="small-note">
+
+        I paint what I like,
+        pursue a feeling,
+        and remain curious.
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ARTIST BIO -->
+
+  <section class="bio">
+
+    <div class="section-label">
+
+      01<br>
+      ARTIST BIO
+
+    </div>
+
+
+    <div class="bio-content">
+
+      <div class="bio-intro">
+
+        I am more interested in expressing
+        <em>“feelings”</em>
+        than explaining emotions.
+
+      </div>
+
+
+      <div class="bio-columns">
+
+        <div>
+
+          <p>
+            Chang Shu is an illustrator and multidisciplinary
+            creative whose practice moves between illustration,
+            digital media, interaction and imagined worlds.
+          </p>
+
+          <p>
+            Her work often explores imagination, dizziness,
+            hallucination, symbolism and the unstable boundary
+            between reality and constructed experience.
+          </p>
+
+        </div>
+
+
+        <div>
+
+          <p>
+            Born in China, Chang developed an early fascination
+            with literature, philosophy, classical music and
+            visual culture. These interests continue to shape
+            the way she constructs images and fictional spaces.
+          </p>
+
+          <p>
+            Rather than describing everything directly,
+            she is interested in images that can be sensed
+            before they can be completely explained.
+          </p>
+
+          <p>
+            When she is not making work, she is probably
+            reading, playing games, thinking about vampires,
+            or trying not to leave the house.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PERSONAL INDEX -->
+
+  <section class="personal">
+
+    <div class="section-label">
+
+      02<br>
+      PERSONAL INDEX
+
+    </div>
+
+
+    <div class="personal-content">
+
+      <h2 class="personal-title">
+
+        Things I care about,
+        want to know,
+        want to have,
+        or never want to stop looking for.
+
+      </h2>
+
+
+      <div class="index-text">
+
+        <span>classical literature</span> ·
+        <span>classical music</span> ·
+        <span>fine arts</span> ·
+        <span>philosophy</span> ·
+        <span>visual culture</span> ·
+        <span>my family</span> ·
+        <span>my friends</span> ·
+        <span>haunted houses</span> ·
+        <span>townhouses</span> ·
+        <span>money</span> ·
+        <span>effortless travelling</span> ·
+        <span>books</span> ·
+        <span>games</span> ·
+        <span>a good computer</span> ·
+        <span>a keyboard with a clear typing sound</span> ·
+        <span>a secluded place to read and write</span> ·
+        <span>the flute</span> ·
+        <span>gardens</span> ·
+        <span>rotating staircases</span> ·
+        <span>cats</span> ·
+        <span>vampires</span> ·
+        <span>psionics</span> ·
+        <span>all the knowledge</span>.
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PERSONAL NOTE -->
+
+  <section class="quote">
+
+    <div class="quote-label">
+
+      03 / PERSONAL NOTE
+
+    </div>
+
+
+    <h2 class="quote-main">
+
+      Everything has<br>
+      <em>no answer.</em>
+
+      <br><br>
+
+      The world is just<br>
+      a giant garden maze.
+
+    </h2>
+
+
+    <div class="lonely">
+
+      I want a lonely
+      but perfect space.
+
+    </div>
+
+
+    <div
+      class="call"
+      id="callButton"
+    >
+
+      Thank you for calling ⏰
+
+    </div>
+
+  </section>
+
+
+  <!-- CALL LOG -->
+
+  <div
+    class="call-log"
+    id="callLog"
+  >
+
+    <div class="call-top">
+
+      <span>
+        CALL LOG / 00
+      </span>
+
+      <span
+        class="close"
+        id="closeCall"
+      >
+        ×
+      </span>
+
+    </div>
+
+
+    <h3>
+
+      Chang Shu is
+      currently unavailable.
+
+    </h3>
+
+
+    <p>
+
+      TIME: UNKNOWN<br>
+      LOCATION: UNKNOWN<br>
+      CONNECTION: UNSTABLE
+
+    </p>
+
+
+    <div class="message">
+
+      leave a message _
+
+    </div>
+
+  </div>
+
+
+  <!-- JAVASCRIPT -->
+
   <script>
+
+    /* CALL LOG */
 
     const callButton =
       document.getElementById("callButton");
@@ -543,16 +1045,77 @@
       document.getElementById("closeCall");
 
 
-    callButton.addEventListener("click", () => {
-      callLog.classList.add("active");
-    });
+    callButton.addEventListener(
+      "click",
+      () => {
+
+        callLog.classList.add("active");
+
+      }
+    );
 
 
-    closeCall.addEventListener("click", () => {
-      callLog.classList.remove("active");
-    });
+    closeCall.addEventListener(
+      "click",
+      () => {
+
+        callLog.classList.remove("active");
+
+      }
+    );
+
+
+    /* CURSOR */
+
+    const cursor =
+      document.getElementById("cursor");
+
+
+    document.addEventListener(
+      "mousemove",
+      (event) => {
+
+        cursor.style.left =
+          event.clientX + "px";
+
+        cursor.style.top =
+          event.clientY + "px";
+
+      }
+    );
+
+
+    /* RANDOM MICRO GLITCH */
+
+    const portrait =
+      document.querySelector(".portrait");
+
+
+    function microGlitch() {
+
+      portrait.style.transform =
+        "translate(2px, -1px)";
+
+      setTimeout(
+        () => {
+
+          portrait.style.transform =
+            "";
+
+        },
+        80
+      );
+
+    }
+
+
+    setInterval(
+      microGlitch,
+      9000
+    );
 
   </script>
 
 </body>
+
 </html>

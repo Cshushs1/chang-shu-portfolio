@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>About — Chang Shu</title>
+  <title>Chang Shu — About</title>
 
   <style>
     * {
@@ -15,11 +13,12 @@
     }
 
     :root {
-      --paper: #f2f0eb;
-      --ink: #111111;
-      --red: #7b1820;
-      --grey: #77736d;
-      --line: rgba(15, 15, 15, 0.25);
+      --paper: #f0ede7;
+      --ink: #171515;
+      --red: #7b171e;
+      --soft-red: #9a3a40;
+      --grey: #77716c;
+      --line: rgba(23, 21, 21, .25);
     }
 
     html {
@@ -30,8 +29,8 @@
       background: var(--paper);
       color: var(--ink);
       font-family: Arial, Helvetica, sans-serif;
-      cursor: crosshair;
       overflow-x: hidden;
+      cursor: crosshair;
     }
 
     a {
@@ -39,28 +38,25 @@
       text-decoration: none;
     }
 
-
-    /* =========================
-       HEADER
-    ========================= */
+    /* HEADER */
 
     header {
-      padding: 30px 4vw 20px;
+      padding: 22px 3vw 17px;
       border-bottom: 1px solid var(--line);
     }
 
     .site-name {
-      text-align: center;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 21px;
-      margin-bottom: 38px;
+      font-size: 16px;
+      letter-spacing: .03em;
+      margin-bottom: 28px;
     }
 
     nav {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 15px;
+      font-size: 14px;
     }
 
     nav a:nth-child(1) {
@@ -76,197 +72,203 @@
       text-align: right;
     }
 
-    nav a {
-      transition: color 0.2s ease;
-    }
-
     nav a:hover,
     nav .active {
       color: var(--red);
     }
 
 
-    /* =========================
-       TOP ARCHIVE INFO
-    ========================= */
+    /* TOP INFORMATION */
 
-    .archive-info {
+    .top-info {
       display: flex;
       justify-content: space-between;
-      padding: 18px 4vw;
+      padding: 16px 3vw 0;
+
       font-family: "Courier New", monospace;
       font-size: 9px;
-      line-height: 1.6;
+      line-height: 1.55;
       letter-spacing: .06em;
       text-transform: uppercase;
     }
 
-    .archive-info-right {
-      color: var(--red);
+    .top-info-right {
       text-align: right;
+      color: var(--red);
     }
 
 
-    /* =========================
-       HERO
-    ========================= */
+    /* FIRST SCREEN */
 
-    .hero {
-      position: relative;
-      min-height: 820px;
-      padding: 60px 5vw 100px;
+    .profile {
+      min-height: 780px;
+      padding: 40px 5vw 90px;
 
       display: grid;
-      grid-template-columns: 0.85fr 1.15fr;
-      gap: 7vw;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 8vw;
+
+      align-items: center;
 
       border-bottom: 1px solid var(--line);
     }
 
 
-    /* PHOTO */
+    /* PORTRAIT */
 
-    .portrait-wrap {
+    .portrait-area {
       position: relative;
-      align-self: start;
-      margin-top: 35px;
+      width: 100%;
+      max-width: 610px;
+    }
+
+    .portrait-frame {
+      position: relative;
+      width: 100%;
     }
 
     .portrait {
-      width: 100%;
-      max-width: 520px;
       display: block;
-      filter: saturate(.86) contrast(1.02);
+      width: 100%;
+      height: auto;
+
+      filter:
+        saturate(.88)
+        contrast(1.03);
+
       transition:
-        transform .25s ease,
-        filter .25s ease;
+        transform .22s ease,
+        filter .22s ease;
     }
 
-    .portrait-wrap::after {
+    /* subtle red ghost */
+
+    .portrait-frame::after {
       content: "";
+
       position: absolute;
+      inset: 0;
 
-      top: 8px;
-      left: 8px;
+      background: rgba(123, 23, 30, .13);
 
-      width: min(100%, 520px);
-      height: 100%;
-
-      border: 1px solid var(--red);
+      mix-blend-mode: multiply;
 
       opacity: 0;
+
+      transform: translate(0, 0);
+
       pointer-events: none;
 
       transition:
         opacity .18s ease,
         transform .18s ease;
-
-      z-index: -1;
     }
 
-    .portrait-wrap:hover .portrait {
+    .portrait-frame:hover .portrait {
       transform: translate(-3px, -2px);
-      filter: saturate(.65) contrast(1.08);
+      filter:
+        saturate(.75)
+        contrast(1.08);
     }
 
-    .portrait-wrap:hover::after {
-      opacity: .65;
-      transform: translate(5px, 5px);
+    .portrait-frame:hover::after {
+      opacity: 1;
+      transform: translate(6px, 3px);
     }
 
-    .photo-note {
-      margin-top: 10px;
-
+    .portrait-data {
       display: flex;
       justify-content: space-between;
 
-      max-width: 520px;
+      padding-top: 9px;
 
       font-family: "Courier New", monospace;
       font-size: 9px;
-
-      color: var(--red);
-    }
-
-
-    /* HERO TEXT */
-
-    .hero-text {
-      position: relative;
-      padding-top: 10px;
-    }
-
-    .record {
       color: var(--red);
 
-      font-family: "Courier New", monospace;
-      font-size: 9px;
-
-      letter-spacing: .08em;
       text-transform: uppercase;
-
-      margin-bottom: 65px;
+      letter-spacing: .04em;
     }
 
-    h1 {
+
+    /* PROFILE TEXT */
+
+    .profile-text {
+      position: relative;
+      align-self: center;
+      padding-top: 15px;
+    }
+
+    .profile-label {
+      font-family: "Courier New", monospace;
+
+      font-size: 9px;
+
+      color: var(--red);
+
+      letter-spacing: .09em;
+
+      margin-bottom: 48px;
+    }
+
+    .profile-name {
       font-family: Georgia, "Times New Roman", serif;
-
-      font-size: clamp(65px, 8vw, 135px);
-
-      line-height: .83;
 
       font-weight: 400;
 
-      letter-spacing: -.055em;
+      font-size: clamp(55px, 6.2vw, 105px);
+
+      line-height: .88;
+
+      letter-spacing: -.045em;
+
+      margin-bottom: 55px;
     }
 
-    h1 em {
+    .profile-name em {
       color: var(--red);
       font-weight: 400;
     }
 
-    .role {
-      margin-top: 55px;
-
-      max-width: 570px;
+    .statement {
+      max-width: 560px;
 
       font-family: Georgia, "Times New Roman", serif;
 
-      font-size: clamp(18px, 1.7vw, 25px);
+      font-size: clamp(20px, 1.75vw, 27px);
 
+      line-height: 1.43;
+    }
+
+    .statement em {
+      color: var(--red);
+    }
+
+    .margin-note {
+      margin-top: 80px;
+      margin-left: 35%;
+
+      width: 230px;
+
+      font-family: Georgia, "Times New Roman", serif;
+
+      font-size: 13px;
       line-height: 1.45;
-    }
-
-    .small-note {
-      position: absolute;
-
-      right: 0;
-      bottom: 5px;
-
-      width: 190px;
-
-      color: var(--red);
-
-      font-family: Georgia, "Times New Roman", serif;
-
-      font-size: 14px;
 
       font-style: italic;
 
-      line-height: 1.4;
+      color: var(--red);
     }
 
 
-    /* =========================
-       ARTIST BIO
-    ========================= */
+    /* ARTIST BIO */
 
     .bio {
-      padding: 130px 5vw;
+      padding: 125px 5vw 150px;
 
       display: grid;
 
-      grid-template-columns: 160px 1fr;
+      grid-template-columns: 150px 1fr;
 
       gap: 7vw;
 
@@ -278,43 +280,46 @@
 
       font-size: 9px;
 
+      line-height: 1.55;
+
       color: var(--red);
 
-      line-height: 1.5;
+      letter-spacing: .05em;
     }
 
     .bio-content {
       max-width: 1050px;
     }
 
-    .bio-intro {
+    .bio-lead {
       max-width: 900px;
+
+      margin-bottom: 85px;
 
       font-family: Georgia, "Times New Roman", serif;
 
-      font-size: clamp(28px, 3.2vw, 50px);
+      font-size: clamp(30px, 3.4vw, 52px);
 
-      line-height: 1.18;
+      line-height: 1.17;
 
-      margin-bottom: 80px;
+      font-weight: 400;
     }
 
-    .bio-intro em {
+    .bio-lead em {
       color: var(--red);
       font-weight: 400;
     }
 
     .bio-columns {
       display: grid;
-
       grid-template-columns: 1fr 1fr;
-
       gap: 7vw;
+
+      max-width: 950px;
 
       font-family: Georgia, "Times New Roman", serif;
 
       font-size: 16px;
-
       line-height: 1.7;
     }
 
@@ -323,116 +328,112 @@
     }
 
 
-    /* =========================
-       PERSONAL INDEX
-    ========================= */
+    /* PERSONAL INDEX */
 
-    .personal {
-      padding: 130px 5vw 160px;
+    .index {
+      padding: 125px 5vw 160px;
 
       display: grid;
 
-      grid-template-columns: 160px 1fr;
+      grid-template-columns: 150px 1fr;
 
       gap: 7vw;
 
       border-bottom: 1px solid var(--line);
     }
 
-    .personal-content {
-      max-width: 1150px;
+    .index-content {
+      max-width: 1100px;
     }
 
-    .personal-title {
+    .index-title {
+      max-width: 850px;
+
+      margin-bottom: 70px;
+
       font-family: Georgia, "Times New Roman", serif;
 
-      font-size: clamp(40px, 5vw, 78px);
+      font-size: clamp(38px, 4.5vw, 70px);
 
       font-weight: 400;
 
-      line-height: 1;
-
-      margin-bottom: 70px;
+      line-height: 1.05;
     }
 
-    .index-text {
+    .things {
       font-family: Georgia, "Times New Roman", serif;
 
-      font-size: clamp(22px, 2.4vw, 38px);
+      font-size: clamp(21px, 2.3vw, 35px);
 
-      line-height: 1.55;
+      line-height: 1.62;
     }
 
-    .index-text span {
+    .thing {
       cursor: crosshair;
 
       transition:
-        color .15s ease,
-        text-shadow .15s ease;
+        color .12s ease,
+        text-shadow .12s ease;
     }
 
-    .index-text span:hover {
+    .thing:hover {
       color: var(--red);
 
       text-shadow:
-        3px 0 rgba(123, 24, 32, .18),
-        -2px 0 rgba(123, 24, 32, .08);
+        3px 0 rgba(123, 23, 30, .14);
     }
 
 
-    /* =========================
-       QUOTE
-    ========================= */
+    /* DARK ENDING */
 
-    .quote {
-      min-height: 750px;
-
-      background: #171414;
-      color: #e5e0d8;
-
+    .ending {
       position: relative;
 
-      padding: 80px 5vw;
+      min-height: 720px;
+
+      padding: 70px 5vw;
+
+      background: #181515;
+      color: #e5dfd7;
 
       overflow: hidden;
     }
 
-    .quote-label {
+    .ending-label {
       font-family: "Courier New", monospace;
 
       font-size: 9px;
 
-      color: #a73a43;
+      color: #a83b43;
 
       letter-spacing: .08em;
     }
 
-    .quote-main {
+    .ending-text {
       position: absolute;
 
       left: 50%;
-      top: 48%;
+      top: 47%;
 
       transform: translate(-50%, -50%);
 
-      width: min(1000px, 85vw);
+      width: min(1050px, 86vw);
 
       text-align: center;
 
       font-family: Georgia, "Times New Roman", serif;
 
-      font-size: clamp(45px, 7vw, 110px);
+      font-size: clamp(42px, 6.5vw, 100px);
 
       font-weight: 400;
 
-      line-height: .92;
+      line-height: .94;
 
       letter-spacing: -.035em;
     }
 
-    .quote-main em {
-      color: #8e252e;
-
+    .ending-text em {
+      color: #8f272f;
       font-weight: 400;
     }
 
@@ -440,37 +441,32 @@
       position: absolute;
 
       left: 5vw;
-      bottom: 45px;
+      bottom: 40px;
+
+      color: #99918c;
 
       font-family: Georgia, "Times New Roman", serif;
 
+      font-size: 13px;
+
       font-style: italic;
-
-      color: #aaa19a;
-
-      font-size: 15px;
     }
-
-
-    /* =========================
-       CALL
-    ========================= */
 
     .call {
       position: absolute;
 
       right: 5vw;
-      bottom: 45px;
+      bottom: 40px;
 
-      color: #a73a43;
+      color: #a83b43;
 
       font-family: Georgia, "Times New Roman", serif;
 
-      font-size: 15px;
+      font-size: 14px;
 
       cursor: pointer;
 
-      border-bottom: 1px solid #a73a43;
+      border-bottom: 1px solid #a83b43;
 
       padding-bottom: 3px;
 
@@ -481,51 +477,48 @@
 
     .call:hover {
       letter-spacing: .06em;
-      color: #d36a71;
+      color: #d36b72;
     }
 
 
-    /* =========================
-       CALL LOG
-    ========================= */
+    /* CALL LOG */
 
     .call-log {
       position: fixed;
 
-      right: 30px;
-      bottom: 30px;
+      right: 28px;
+      bottom: 28px;
 
       width: 330px;
+
+      padding: 20px;
 
       background: var(--paper);
       color: var(--ink);
 
       border: 1px solid var(--red);
 
-      padding: 20px;
+      box-shadow:
+        8px 8px 0 rgba(123, 23, 30, .24);
 
       z-index: 1000;
 
       display: none;
-
-      box-shadow:
-        8px 8px 0 rgba(123, 24, 32, .25);
     }
 
     .call-log.active {
       display: block;
-
-      animation: callIn .18s ease;
+      animation: callOpen .2s ease;
     }
 
-    @keyframes callIn {
+    @keyframes callOpen {
 
       0% {
         opacity: 0;
         transform: translateX(12px);
       }
 
-      45% {
+      40% {
         transform: translateX(-4px);
       }
 
@@ -536,34 +529,34 @@
 
     }
 
-    .call-top {
+    .call-head {
       display: flex;
       justify-content: space-between;
+
+      margin-bottom: 48px;
+
+      color: var(--red);
 
       font-family: "Courier New", monospace;
 
       font-size: 9px;
-
-      color: var(--red);
-
-      margin-bottom: 50px;
     }
 
     .close {
       cursor: pointer;
-      font-size: 16px;
+      font-size: 17px;
     }
 
     .call-log h3 {
+      margin-bottom: 25px;
+
       font-family: Georgia, "Times New Roman", serif;
 
+      font-size: 29px;
+
+      line-height: 1.08;
+
       font-weight: 400;
-
-      font-size: 30px;
-
-      line-height: 1.05;
-
-      margin-bottom: 25px;
     }
 
     .call-log p {
@@ -571,13 +564,13 @@
 
       font-size: 10px;
 
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
-    .message {
-      margin-top: 45px;
+    .leave-message {
+      margin-top: 42px;
 
-      padding-bottom: 8px;
+      padding-bottom: 7px;
 
       border-bottom: 1px solid var(--ink);
 
@@ -589,77 +582,85 @@
     }
 
 
-    /* =========================
-       CURSOR DOT
-    ========================= */
+    /* CURSOR */
 
-    .cursor-dot {
-      width: 7px;
-      height: 7px;
-
+    .cursor {
       position: fixed;
 
       left: 0;
       top: 0;
 
-      background: var(--red);
+      width: 7px;
+      height: 7px;
 
       border-radius: 50%;
+
+      background: var(--red);
+
+      transform: translate(-50%, -50%);
 
       pointer-events: none;
 
       z-index: 9999;
 
-      transform: translate(-50%, -50%);
+      opacity: .75;
 
-      opacity: .8;
+      transition:
+        width .15s ease,
+        height .15s ease,
+        opacity .15s ease;
+    }
+
+    body.hovering .cursor {
+      width: 18px;
+      height: 18px;
+      opacity: .28;
     }
 
 
-    /* =========================
-       MOBILE
-    ========================= */
+    /* MOBILE */
 
     @media (max-width: 800px) {
+
+      header {
+        padding-left: 5vw;
+        padding-right: 5vw;
+      }
 
       nav {
         font-size: 12px;
       }
 
-      .hero {
+      .top-info {
+        padding-left: 5vw;
+        padding-right: 5vw;
+      }
+
+      .profile {
         grid-template-columns: 1fr;
 
         min-height: auto;
 
-        padding-bottom: 120px;
+        gap: 75px;
+
+        padding-top: 60px;
       }
 
-      .portrait {
-        max-width: 80vw;
+      .portrait-area {
+        max-width: 85vw;
       }
 
-      .photo-note {
-        max-width: 80vw;
+      .profile-label {
+        margin-bottom: 30px;
       }
 
-      .hero-text {
-        padding-top: 30px;
-      }
-
-      .record {
-        margin-bottom: 35px;
-      }
-
-      .small-note {
-        position: relative;
-
-        margin-top: 70px;
-
-        width: 180px;
+      .margin-note {
+        margin-left: auto;
+        margin-top: 60px;
       }
 
       .bio,
-      .personal {
+      .index {
         grid-template-columns: 1fr;
 
         gap: 60px;
@@ -669,12 +670,12 @@
         grid-template-columns: 1fr;
       }
 
-      .quote {
+      .ending {
         min-height: 650px;
       }
 
       .lonely {
-        width: 45%;
+        width: 40%;
       }
 
       .call-log {
@@ -684,18 +685,18 @@
         width: 90vw;
       }
 
-      .cursor-dot {
+      .cursor {
         display: none;
       }
-    }
 
+    }
   </style>
 </head>
 
 
 <body>
 
-  <div class="cursor-dot" id="cursor"></div>
+  <div class="cursor" id="cursor"></div>
 
 
   <!-- HEADER -->
@@ -716,7 +717,7 @@
         Works
       </a>
 
-      <a class="active" href="about.html">
+      <a href="about.html" class="active">
         About
       </a>
 
@@ -729,82 +730,86 @@
   </header>
 
 
-  <!-- ARCHIVE INFORMATION -->
+  <!-- ARCHIVE DATA -->
 
-  <div class="archive-info">
+  <div class="top-info">
 
     <div>
       PERSONAL ARCHIVE<br>
-      RECORD 00 / ABOUT<br>
-      CHANG SHU
+      RECORD / 00<br>
+      ABOUT
     </div>
 
-    <div class="archive-info-right">
+    <div class="top-info-right">
+      CHANG SHU<br>
       ARTIST PROFILE<br>
-      STATUS: IN PROGRESS
+      STATUS / OPEN
     </div>
 
   </div>
 
 
-  <!-- HERO -->
+  <!-- PROFILE -->
 
-  <section class="hero">
+  <main class="profile">
 
-    <div class="portrait-wrap">
 
-      <img
-        src="portrait.png"
-        alt="Portrait of Chang Shu"
-        class="portrait"
-      >
+    <div class="portrait-area">
 
-      <div class="photo-note">
+      <div class="portrait-frame">
 
-        <span>
-          FIG. 00
-        </span>
+        <img
+          src="portrait.png"
+          alt="Chang Shu"
+          class="portrait"
+          id="portrait"
+        >
 
-        <span>
-          PERSONAL RECORD
-        </span>
+      </div>
+
+      <div class="portrait-data">
+
+        <span>FIG. 00</span>
+
+        <span>PERSONAL RECORD</span>
 
       </div>
 
     </div>
 
 
-    <div class="hero-text">
+    <div class="profile-text">
 
-      <div class="record">
-        ARTIST / ILLUSTRATOR /
-        MULTIDISCIPLINARY CREATIVE
+      <div class="profile-label">
+        ARTIST / ILLUSTRATOR / MULTIDISCIPLINARY CREATIVE
       </div>
 
-      <h1>
+      <h1 class="profile-name">
         Chang<br>
         <em>Shu.</em>
       </h1>
 
-      <div class="role">
+      <p class="statement">
 
-        I am interested in visual experience,
-        spiritual exploration and the unstable
-        boundary between reality and imagined worlds.
+        My work moves between visual experience,
+        imagined worlds and spiritual exploration.
 
-      </div>
+        I am interested in things that can be
+        <em>felt before they can be explained.</em>
 
-      <div class="small-note">
+      </p>
 
-        I paint what I like,
-        pursue a feeling,
-        and remain curious.
+      <div class="margin-note">
+
+        Between the real
+        &amp; the imagined.
 
       </div>
 
     </div>
 
-  </section>
+
+  </main>
 
 
   <!-- ARTIST BIO -->
@@ -821,29 +826,30 @@
 
     <div class="bio-content">
 
-      <div class="bio-intro">
+      <h2 class="bio-lead">
 
         I am more interested in expressing
         <em>“feelings”</em>
         than explaining emotions.
 
-      </div>
+      </h2>
 
 
       <div class="bio-columns">
+
 
         <div>
 
           <p>
             Chang Shu is an illustrator and multidisciplinary
-            creative whose practice moves between illustration,
+            artist whose practice moves between illustration,
             digital media, interaction and imagined worlds.
           </p>
 
           <p>
-            Her work often explores imagination, dizziness,
-            hallucination, symbolism and the unstable boundary
-            between reality and constructed experience.
+            Her work explores imagination, dizziness,
+            hallucination, symbolism and the unstable
+            boundary between reality and constructed experience.
           </p>
 
         </div>
@@ -855,13 +861,15 @@
             Born in China, Chang developed an early fascination
             with literature, philosophy, classical music and
             visual culture. These interests continue to shape
-            the way she constructs images and fictional spaces.
+            the way she constructs images, systems and
+            fictional spaces.
           </p>
 
           <p>
             Rather than describing everything directly,
-            she is interested in images that can be sensed
-            before they can be completely explained.
+            she is interested in images and experiences
+            that can be sensed before they can be
+            completely explained.
           </p>
 
           <p>
@@ -872,6 +880,7 @@
 
         </div>
 
+
       </div>
 
     </div>
@@ -881,7 +890,7 @@
 
   <!-- PERSONAL INDEX -->
 
-  <section class="personal">
+  <section class="index">
 
     <div class="section-label">
 
@@ -891,9 +900,9 @@
     </div>
 
 
-    <div class="personal-content">
+    <div class="index-content">
 
-      <h2 class="personal-title">
+      <h2 class="index-title">
 
         Things I care about,
         want to know,
@@ -903,31 +912,31 @@
       </h2>
 
 
-      <div class="index-text">
+      <div class="things">
 
-        <span>classical literature</span> ·
-        <span>classical music</span> ·
-        <span>fine arts</span> ·
-        <span>philosophy</span> ·
-        <span>visual culture</span> ·
-        <span>my family</span> ·
-        <span>my friends</span> ·
-        <span>haunted houses</span> ·
-        <span>townhouses</span> ·
-        <span>money</span> ·
-        <span>effortless travelling</span> ·
-        <span>books</span> ·
-        <span>games</span> ·
-        <span>a good computer</span> ·
-        <span>a keyboard with a clear typing sound</span> ·
-        <span>a secluded place to read and write</span> ·
-        <span>the flute</span> ·
-        <span>gardens</span> ·
-        <span>rotating staircases</span> ·
-        <span>cats</span> ·
-        <span>vampires</span> ·
-        <span>psionics</span> ·
-        <span>all the knowledge</span>.
+        <span class="thing">classical literature</span> ·
+        <span class="thing">classical music</span> ·
+        <span class="thing">fine arts</span> ·
+        <span class="thing">philosophy</span> ·
+        <span class="thing">visual culture</span> ·
+        <span class="thing">my family</span> ·
+        <span class="thing">my friends</span> ·
+        <span class="thing">haunted houses</span> ·
+        <span class="thing">townhouses</span> ·
+        <span class="thing">money</span> ·
+        <span class="thing">effortless travelling</span> ·
+        <span class="thing">books</span> ·
+        <span class="thing">games</span> ·
+        <span class="thing">a good computer</span> ·
+        <span class="thing">a keyboard with a clear typing sound</span> ·
+        <span class="thing">a secluded place to read and write</span> ·
+        <span class="thing">the flute</span> ·
+        <span class="thing">gardens</span> ·
+        <span class="thing">rotating staircases</span> ·
+        <span class="thing">cats</span> ·
+        <span class="thing">vampires</span> ·
+        <span class="thing">psionics</span> ·
+        <span class="thing">all the knowledge</span>.
 
       </div>
 
@@ -936,18 +945,16 @@
   </section>
 
 
-  <!-- PERSONAL NOTE -->
+  <!-- ENDING -->
 
-  <section class="quote">
+  <section class="ending">
 
-    <div class="quote-label">
-
+    <div class="ending-label">
       03 / PERSONAL NOTE
-
     </div>
 
 
-    <h2 class="quote-main">
+    <h2 class="ending-text">
 
       Everything has<br>
       <em>no answer.</em>
@@ -961,10 +968,7 @@
 
 
     <div class="lonely">
-
-      I want a lonely
-      but perfect space.
-
+      I want a lonely but perfect space.
     </div>
 
 
@@ -972,22 +976,20 @@
       class="call"
       id="callButton"
     >
-
       Thank you for calling ⏰
-
     </div>
 
   </section>
 
 
-  <!-- CALL LOG -->
+  <!-- CALL WINDOW -->
 
   <div
     class="call-log"
     id="callLog"
   >
 
-    <div class="call-top">
+    <div class="call-head">
 
       <span>
         CALL LOG / 00
@@ -1004,36 +1006,83 @@
 
 
     <h3>
-
-      Chang Shu is
-      currently unavailable.
-
+      Chang Shu is currently unavailable.
     </h3>
 
 
     <p>
-
-      TIME: UNKNOWN<br>
-      LOCATION: UNKNOWN<br>
-      CONNECTION: UNSTABLE
-
+      TIME / UNKNOWN<br>
+      LOCATION / UNKNOWN<br>
+      CONNECTION / UNSTABLE
     </p>
 
 
-    <div class="message">
-
+    <div class="leave-message">
       leave a message _
-
     </div>
 
   </div>
 
 
-  <!-- JAVASCRIPT -->
-
   <script>
 
-    /* CALL LOG */
+    /* CUSTOM CURSOR */
+
+    const cursor =
+      document.getElementById("cursor");
+
+
+    document.addEventListener(
+      "mousemove",
+      function(event) {
+
+        cursor.style.left =
+          event.clientX + "px";
+
+        cursor.style.top =
+          event.clientY + "px";
+
+      }
+    );
+
+
+    const interactive =
+      document.querySelectorAll(
+        "a, .thing, .call, .portrait-frame"
+      );
+
+
+    interactive.forEach(
+      function(item) {
+
+        item.addEventListener(
+          "mouseenter",
+          function() {
+
+            document.body.classList.add(
+              "hovering"
+            );
+
+          }
+        );
+
+
+        item.addEventListener(
+          "mouseleave",
+          function() {
+
+            document.body.classList.remove(
+              "hovering"
+            );
+
+          }
+        );
+
+      }
+    );
+
+
+    /* CALL WINDOW */
 
     const callButton =
       document.getElementById("callButton");
@@ -1047,7 +1096,7 @@
 
     callButton.addEventListener(
       "click",
-      () => {
+      function() {
 
         callLog.classList.add("active");
 
@@ -1057,7 +1106,7 @@
 
     closeCall.addEventListener(
       "click",
-      () => {
+      function() {
 
         callLog.classList.remove("active");
 
@@ -1065,57 +1114,35 @@
     );
 
 
-    /* CURSOR */
-
-    const cursor =
-      document.getElementById("cursor");
-
-
-    document.addEventListener(
-      "mousemove",
-      (event) => {
-
-        cursor.style.left =
-          event.clientX + "px";
-
-        cursor.style.top =
-          event.clientY + "px";
-
-      }
-    );
-
-
-    /* RANDOM MICRO GLITCH */
+    /* VERY SMALL RANDOM IMAGE GLITCH */
 
     const portrait =
-      document.querySelector(".portrait");
+      document.getElementById("portrait");
 
 
-    function microGlitch() {
+    function glitchPortrait() {
 
       portrait.style.transform =
         "translate(2px, -1px)";
 
       setTimeout(
-        () => {
+        function() {
 
-          portrait.style.transform =
-            "";
+          portrait.style.transform = "";
 
         },
-        80
+        65
       );
 
     }
 
 
     setInterval(
-      microGlitch,
-      9000
+      glitchPortrait,
+      11000
     );
 
   </script>
 
 </body>
-
 </html>

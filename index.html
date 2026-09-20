@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Chang Shu — Portfolio</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #08090b;
+      color: #f2f1ee;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* NAVIGATION */
+
+    header {
+      height: 140px;
+      padding: 0 4.7vw;
+      border-bottom: 1px solid #34363d;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 42px;
+      font-weight: 600;
+    }
+
+    nav {
+      display: flex;
+      gap: 60px;
+      align-items: center;
+    }
+
+    nav a {
+      font-size: 30px;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 65px 4.7vw 50px;
+    }
+
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .category {
+      color: #a7a8af;
+      font-size: 27px;
+      line-height: 1.35;
+    }
+
+    .statement {
+      color: #d75b65;
+      font-size: 26px;
+      line-height: 1.4;
+      text-align: right;
+    }
+
+    h1 {
+      font-size: clamp(90px, 14vw, 190px);
+      font-weight: 400;
+      line-height: 0.9;
+      letter-spacing: -0.06em;
+
+      margin-top: 70px;
+      margin-bottom: 75px;
+    }
+
+    /* FEATURE PROJECT */
+
+    .feature {
+      height: 600px;
+      position: relative;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          135deg,
+          #252326,
+          #121316
+        );
+    }
+
+    .feature-placeholder {
+      width: 100%;
+      height: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: #6f7075;
+      font-size: 18px;
+      letter-spacing: 0.08em;
+    }
+
+    .feature::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          to bottom,
+          transparent 45%,
+          rgba(0,0,0,.85)
+        );
+    }
+
+    .project-name {
+      position: absolute;
+      z-index: 2;
+
+      left: 5%;
+      bottom: 8%;
+
+      font-size: 25px;
+    }
+
+    .project-arrow {
+      position: absolute;
+      z-index: 2;
+
+      right: 5%;
+      bottom: 8%;
+
+      font-size: 32px;
+    }
+
+    /* INTRO */
+
+    .intro {
+      padding-top: 48px;
+    }
+
+    .intro-label {
+      color: #a7a8af;
+
+      font-size: 26px;
+      margin-bottom: 42px;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+
+    .roles {
+      font-size: 30px;
+      line-height: 1.55;
+    }
+
+    .explore {
+      font-size: 29px;
+    }
+
+    .explore span {
+      margin-left: 25px;
+    }
+
+    .line {
+      height: 1px;
+      background: #34363d;
+      margin-top: 18px;
+    }
+
+    /* BOTTOM */
+
+    .hero-bottom {
+      margin-top: 90px;
+      padding-bottom: 35px;
+
+      border-bottom: 1px solid #34363d;
+
+      display: flex;
+      justify-content: space-between;
+
+      color: #a7a8af;
+      font-size: 25px;
+    }
+
+    .hero-bottom-right {
+      text-align: right;
+    }
+
+    /* WORKS PLACEHOLDER */
+
+    #works {
+      padding: 120px 4.7vw;
+      min-height: 100vh;
+    }
+
+    #works h2 {
+      font-size: clamp(70px, 10vw, 140px);
+      font-weight: 400;
+      letter-spacing: -0.05em;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 700px) {
+
+      header {
+        height: 95px;
+      }
+
+      .logo {
+        font-size: 25px;
+      }
+
+      nav {
+        gap: 20px;
+      }
+
+      nav a {
+        font-size: 17px;
+      }
+
+      .hero {
+        padding-top: 40px;
+      }
+
+      .category,
+      .statement {
+        font-size: 17px;
+      }
+
+      h1 {
+        margin-top: 55px;
+        margin-bottom: 45px;
+      }
+
+      .feature {
+        height: 500px;
+      }
+
+      .intro-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-bottom {
+        font-size: 17px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+
+    <a class="logo" href="#">
+      Chang Shu
+    </a>
+
+    <nav>
+      <a href="#works">Works</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact ↗</a>
+    </nav>
+
+  </header>
+
+
+  <main class="hero">
+
+    <div class="hero-top">
+
+      <div class="category">
+        INTERACTION / DIGITAL<br>
+        MEDIA / GAMES
+      </div>
+
+      <div class="statement">
+        Between the real &amp; the<br>
+        imagined.
+      </div>
+
+    </div>
+
+
+    <h1>Chang Shu</h1>
+
+
+    <div class="feature">
+
+      <div class="feature-placeholder">
+        HEART BENEATH BETHLEHEM — IMAGE
+      </div>
+
+      <div class="project-name">
+        01 / HEART BENEATH BETHLEHEM
+      </div>
+
+      <div class="project-arrow">
+        ↗
+      </div>
+
+    </div>
+
+
+    <section class="intro">
+
+      <div class="intro-label">
+        DESIGNER &amp; IMAGE MAKER
+      </div>
+
+
+      <div class="intro-grid">
+
+        <div class="roles">
+          Interaction Designer<br>
+          Digital Media Artist<br>
+          Game Designer
+        </div>
+
+
+        <a class="explore" href="#works">
+
+          Explore selected works
+          <span>↓</span>
+
+          <div class="line"></div>
+
+        </a>
+
+      </div>
+
+
+      <div class="hero-bottom">
+
+        <div>
+          SCROLL TO ENTER
+          &nbsp;&nbsp;&nbsp; ↓
+        </div>
+
+        <div class="hero-bottom-right">
+          SELECTED<br>
+          EXPERIMENTS &amp;<br>
+          NARRATIVES
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <section id="works">
+
+    <h2>
+      Selected<br>
+      Works
+    </h2>
+
+  </section>
+
+</body>
+</html>

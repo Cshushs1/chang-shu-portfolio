@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Contact — Chang Shu</title>
+
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      background: #ffffff;
+      color: #111111;
+
+      font-family:
+        "Helvetica Neue",
+        Helvetica,
+        Arial,
+        sans-serif;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    /* =========================
+       PAGE
+    ========================== */
+
+    .contact-page {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      padding: 32px 42px 35px;
+
+      display: flex;
+      flex-direction: column;
+
+      background: #ffffff;
+    }
+
+
+    /* =========================
+       HEADER
+    ========================== */
+
+    .top-nav {
+      height: 42px;
+
+      display: flex;
+      align-items: center;
+
+      width: 100%;
+
+      font-size: 11px;
+      font-weight: 400;
+
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+
+      z-index: 50;
+    }
+
+
+    /* LOGO */
+
+    .logo {
+      width: 34px;
+      height: 34px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex-shrink: 0;
+
+      transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    .logo:hover {
+      opacity: 0.65;
+      transform: scale(0.96);
+    }
+
+
+    /* DIVIDER */
+
+    .nav-divider {
+      width: 1px;
+      height: 28px;
+
+      margin-left: 25px;
+      margin-right: 25px;
+
+      background: #d4d4d4;
+    }
+
+
+    /* LOCATION */
+
+    .location {
+      white-space: nowrap;
+
+      color: #222222;
+
+      cursor: default;
+    }
+
+
+    /* NAVIGATION */
+
+    .navigation {
+      margin-left: auto;
+
+      display: flex;
+      align-items: center;
+
+      gap: 46px;
+    }
+
+    .navigation a {
+      position: relative;
+
+      transition: opacity 0.25s ease;
+    }
+
+    .navigation a:hover {
+      opacity: 0.4;
+    }
+
+    .navigation .active::after {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      right: 0;
+
+      bottom: -10px;
+
+      height: 1px;
+
+      background: #d71920;
+    }
+
+
+    /* =========================
+       MAIN
+    ========================== */
+
+    .contact-main {
+      flex: 1;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 0.95fr)
+        minmax(480px, 1.05fr);
+
+      align-items: center;
+
+      column-gap: clamp(70px, 8vw, 160px);
+
+      padding:
+        clamp(80px, 10vh, 130px)
+        4vw
+        clamp(70px, 8vh, 100px);
+    }
+
+
+    /* =========================
+       LEFT
+    ========================== */
+
+    .contact-intro {
+      align-self: center;
+    }
+
+    .eyebrow {
+      margin-bottom: 38px;
+
+      font-size: 10px;
+      font-weight: 400;
+
+      letter-spacing: 0.24em;
+
+      text-transform: uppercase;
+    }
+
+
+    /* TITLE */
+
+    .title {
+      font-size: clamp(76px, 8.3vw, 150px);
+
+      font-weight: 300;
+
+      letter-spacing: -0.07em;
+
+      line-height: 0.82;
+    }
+
+    .title span {
+      display: block;
+    }
+
+
+    /* DESCRIPTION */
+
+    .description {
+      margin-top: 64px;
+
+      max-width: 410px;
+
+      font-size: 17px;
+      font-weight: 300;
+
+      line-height: 1.55;
+
+      letter-spacing: -0.01em;
+
+      color: #333333;
+    }
+
+
+    /* =========================
+       CONTACT LIST
+    ========================== */
+
+    .contact-links {
+      width: 100%;
+
+      max-width: 680px;
+
+      justify-self: end;
+    }
+
+
+    /* ITEM */
+
+    .contact-item {
+      position: relative;
+
+      min-height: 112px;
+
+      display: grid;
+
+      grid-template-columns:
+        130px
+        minmax(0, 1fr)
+        auto;
+
+      align-items: center;
+
+      column-gap: 28px;
+
+      border-top: 1px solid #d4d4d4;
+
+      transition:
+        padding-left 0.3s ease,
+        opacity 0.25s ease;
+    }
+
+    .contact-item:last-child {
+      border-bottom: 1px solid #d4d4d4;
+    }
+
+    .contact-item:hover {
+      padding-left: 9px;
+    }
+
+
+    /* LABEL */
+
+    .contact-label {
+      font-size: 10px;
+      font-weight: 400;
+
+      letter-spacing: 0.20em;
+
+      text-transform: uppercase;
+
+      color: #666666;
+    }
+
+
+    /* VALUE */
+
+    .contact-value {
+      min-width: 0;
+
+      font-size: clamp(20px, 1.7vw, 29px);
+
+      font-weight: 300;
+
+      letter-spacing: -0.025em;
+
+      overflow-wrap: anywhere;
+    }
+
+
+    /* ARROW */
+
+    .contact-arrow {
+      font-size: 25px;
+      font-weight: 300;
+
+      transition: transform 0.3s ease;
+    }
+
+    .contact-item:hover .contact-arrow {
+      transform: translate(6px, -4px);
+    }
+
+
+    /* =========================
+       CV
+    ========================== */
+
+    .cv-content {
+      min-width: 0;
+    }
+
+    .cv-main {
+      display: block;
+
+      font-size: clamp(20px, 1.7vw, 29px);
+
+      font-weight: 300;
+
+      letter-spacing: -0.025em;
+    }
+
+    .cv-version {
+      display: block;
+
+      margin-top: 7px;
+
+      font-size: 9px;
+
+      letter-spacing: 0.20em;
+
+      text-transform: uppercase;
+
+      color: #888888;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    .footer {
+      width: 100%;
+
+      display: flex;
+
+      justify-content: space-between;
+      align-items: flex-end;
+
+      font-size: 9px;
+
+      letter-spacing: 0.18em;
+
+      text-transform: uppercase;
+    }
+
+
+    /* LOCATION FOOTER */
+
+    .availability {
+      display: flex;
+
+      align-items: center;
+
+      gap: 18px;
+    }
+
+    .red-line {
+      width: 42px;
+      height: 1px;
+
+      background: #d71920;
+    }
+
+    .based-text {
+      line-height: 1.6;
+    }
+
+    .based-label {
+      display: block;
+
+      color: #777777;
+    }
+
+    .based-location {
+      display: block;
+
+      color: #111111;
+    }
+
+
+    /* COPYRIGHT */
+
+    .copyright {
+      white-space: nowrap;
+    }
+
+
+    /* =========================
+       TABLET
+    ========================== */
+
+    @media (max-width: 1000px) {
+
+      .contact-main {
+        grid-template-columns: 1fr;
+
+        gap: 100px;
+
+        align-items: start;
+
+        padding-top: 130px;
+      }
+
+      .contact-links {
+        max-width: none;
+
+        justify-self: stretch;
+      }
+
+      .title {
+        font-size: clamp(82px, 15vw, 145px);
+      }
+
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================== */
+
+    @media (max-width: 650px) {
+
+      .contact-page {
+        padding:
+          20px
+          18px
+          28px;
+      }
+
+
+      /* HEADER */
+
+      .top-nav {
+        height: auto;
+      }
+
+      .logo {
+        width: 28px;
+        height: 28px;
+      }
+
+      .nav-divider {
+        display: none;
+      }
+
+      .location {
+        display: none;
+      }
+
+      .navigation {
+        gap: 13px;
+
+        font-size: 8px;
+      }
+
+
+      /* MAIN */
+
+      .contact-main {
+        padding:
+          105px
+          0
+          90px;
+
+        gap: 85px;
+      }
+
+      .eyebrow {
+        margin-bottom: 26px;
+
+        font-size: 9px;
+      }
+
+      .title {
+        font-size: clamp(68px, 21vw, 105px);
+      }
+
+      .description {
+        margin-top: 45px;
+
+        max-width: 320px;
+
+        font-size: 15px;
+      }
+
+
+      /* CONTACT */
+
+      .contact-item {
+        min-height: 92px;
+
+        grid-template-columns:
+          82px
+          minmax(0, 1fr)
+          auto;
+
+        column-gap: 12px;
+      }
+
+      .contact-label {
+        font-size: 8px;
+      }
+
+      .contact-value,
+      .cv-main {
+        font-size: 15px;
+      }
+
+      .contact-arrow {
+        font-size: 19px;
+      }
+
+      .cv-version {
+        margin-top: 5px;
+
+        font-size: 7px;
+      }
+
+
+      /* FOOTER */
+
+      .footer {
+        align-items: flex-end;
+
+        font-size: 8px;
+      }
+
+      .red-line {
+        width: 30px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <main class="contact-page">
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="top-nav">
+
+
+      <!-- LOGO = HOME -->
+
+      <a
+        href="index.html"
+        class="logo"
+        aria-label="Back to homepage"
+      >
+
+        <img
+          src="logo.png"
+          alt="Chang Shu logo"
+        >
+
+      </a>
+
+
+      <div class="nav-divider"></div>
+
+
+      <!-- LOCATION -->
+
+      <div class="location">
+        New York / Hong Kong
+      </div>
+
+
+      <!-- NAVIGATION -->
+
+      <nav class="navigation">
+
+        <a href="work.html">
+          Work
+        </a>
+
+        <a href="about.html">
+          Information
+        </a>
+
+        <a
+          href="contact.html"
+          class="active"
+        >
+          Contact
+        </a>
+
+      </nav>
+
+    </header>
+
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <section class="contact-main">
+
+
+      <!-- LEFT -->
+
+      <div class="contact-intro">
+
+        <p class="eyebrow">
+          Get in touch
+        </p>
+
+
+        <h1 class="title">
+
+          <span>
+            LET'S
+          </span>
+
+          <span>
+            CONNECT.
+          </span>
+
+        </h1>
+
+
+        <p class="description">
+          For collaborations, projects, opportunities,
+          or simply to say hello.
+        </p>
+
+      </div>
+
+
+
+      <!-- RIGHT -->
+
+      <div class="contact-links">
+
+
+        <!-- EMAIL -->
+
+        <a
+          href="mailto:cshushs1@gmail.com"
+          class="contact-item"
+        >
+
+          <span class="contact-label">
+            Email
+          </span>
+
+          <span class="contact-value">
+            cshushs1@gmail.com
+          </span>
+
+          <span class="contact-arrow">
+            ↗
+          </span>
+
+        </a>
+
+
+
+        <!-- LINKEDIN -->
+
+        <a
+          href="https://www.linkedin.com/in/chang-shu-3b844641b/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-item"
+        >
+
+          <span class="contact-label">
+            LinkedIn
+          </span>
+
+          <span class="contact-value">
+            Chang Shu
+          </span>
+
+          <span class="contact-arrow">
+            ↗
+          </span>
+
+        </a>
+
+
+
+        <!-- CV -->
+
+        <a
+          href="Chang_Shu_CV_CN.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-item"
+        >
+
+          <span class="contact-label">
+            CV
+          </span>
+
+
+          <span class="cv-content">
+
+            <span class="cv-main">
+              View Curriculum Vitae
+            </span>
+
+            <span class="cv-version">
+              CN · Chinese Version
+            </span>
+
+          </span>
+
+
+          <span class="contact-arrow">
+            ↗
+          </span>
+
+        </a>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="footer">
+
+
+      <div class="availability">
+
+        <span class="red-line"></span>
+
+
+        <span class="based-text">
+
+          <span class="based-label">
+            Based Between
+          </span>
+
+          <span class="based-location">
+            New York / Hong Kong
+          </span>
+
+        </span>
+
+      </div>
+
+
+      <span class="copyright">
+        © 2026 Chang Shu
+      </span>
+
+
+    </footer>
+
+
+  </main>
+
+</body>
+
+</html>
